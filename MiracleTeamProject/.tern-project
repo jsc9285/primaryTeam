@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "plugins": {
     "guess-types": {
       
@@ -13,4 +14,23 @@
     "jquery"
   ],
   "ecmaVersion": 5
+=======
+  "ecmaVersion": 5,
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "browser-extension": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "browser",
+    "jquery"
+  ]
+>>>>>>> branch 'master' of https://github.com/jsc9285/primaryTeam.git
 }
