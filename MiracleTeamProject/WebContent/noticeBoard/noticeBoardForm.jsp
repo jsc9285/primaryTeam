@@ -26,15 +26,11 @@
 }
 </style>
 
-<script type="text/javascript">
-	function writeForm() {
-		// ★멤버DB 받으면할 것 !★ 메인화면에서 post로 넘어갈 때 회원의 no를 넘겨줘서
-		//					post서블릿(get)에서 no를 통해 회원의 정보를 조회하여 post폼으로 넘김
-	}
-</script>
 </head>
 
 <body>
+
+	<jsp:include page="/common/Header.jsp" />
 
 	<div id="wrap">
 		<br>
@@ -75,6 +71,8 @@
 			</form>
 		</div>
 	</div>
+	
+	<jsp:include page="/common/Bottom.jsp" />
 
 </body>
 </html>

@@ -225,10 +225,38 @@ public class NoticeDao {
 		return result;
 	} // noticeUpdate End
 	
-	public int noticeDelete(int no) {
-		int result = 0;
-		
+	public int noticeDelete(int no) throws SQLException {
+		int result = 0;	
 		PreparedStatement pstmt = null;
+
+		try {
+			String sql = "";
+			sql = "DELETE FROM NOTICE_POST";
+			sql += " WHERE NO = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, no);			
+			
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		} finally {
+
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} // finally 종료
+		
 		return result;
 	}
 	
