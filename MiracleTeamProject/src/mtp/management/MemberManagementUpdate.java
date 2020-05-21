@@ -32,6 +32,7 @@ public class MemberManagementUpdate extends HttpServlet{
 			mNo = req.getParameter("mmNo");
 			aNo = req.getParameter("adNo");
 			
+			
 			ServletContext sc = this.getServletContext();
 			
 			conn = (Connection) sc.getAttribute("conn");
@@ -49,7 +50,6 @@ public class MemberManagementUpdate extends HttpServlet{
 				MemberDto adminDto = memberDao.adminSelectThis(abNo);
 				req.setAttribute("adminDto", adminDto);
 			}
-			
 			rd = req.getRequestDispatcher("./MemberManagementUpdateView.jsp");
 			rd.forward(req, res);
 
@@ -69,37 +69,57 @@ public class MemberManagementUpdate extends HttpServlet{
 		
 		Connection conn = null;
 		
+		String mNo = "";
+		String aNo = "";
+		
 		try {
 			String email = req.getParameter("email");
 			String name = req.getParameter("name");
 			String pwd = req.getParameter("password");
-			String mNo = req.getParameter("no");
-			int no = Integer.parseInt(mNo);
+			mNo = req.getParameter("mmNo");
+			aNo = req.getParameter("adNo");
+			if (mNo != null) {
+				int no = Integer.parseInt(mNo);
+				memberDto = new MemberDto();
+				memberDto.setEmail(email);
+				memberDto.setName(name);
+				memberDto.setPassword(pwd);
+				memberDto.setNo(no);
+				
+				ServletContext sc = this.getServletContext();
+				
+				conn = (Connection) sc.getAttribute("conn");
+				
+				MemberDao memberDao = new MemberDao();
+				memberDao.setConnection(conn);
+				int result = memberDao.memberManagementUpdate(memberDto);
+				
+				if(result == 0){
+					System.out.println("회원 정보 조회가 실패하였습니다.");
+				}
+				
+			} else if (aNo != null) {
+				int abNo = Integer.parseInt(aNo);	
+				memberDto = new MemberDto();
+				memberDto.setEmail(email);
+				memberDto.setName(name);
+				memberDto.setPassword(pwd);
+				memberDto.setNo(abNo);
+				
+				ServletContext sc = this.getServletContext();
+				
+				conn = (Connection) sc.getAttribute("conn");
+				
+				MemberDao memberDao = new MemberDao();
+				memberDao.setConnection(conn);
+				
+				int admin = memberDao.adminManagementUpdate(memberDto);
+				
+				if(admin == 0) {
+					System.out.println("관리자 정보 조회가 실패하였습니다.");
+				}
 			
-			memberDto = new MemberDto();
-			memberDto.setEmail(email);
-			memberDto.setName(name);
-			memberDto.setPassword(pwd);
-			memberDto.setNo(no);
-			
-			ServletContext sc = this.getServletContext();
-
-			conn = (Connection) sc.getAttribute("conn");
-
-			MemberDao memberDao = new MemberDao();
-			memberDao.setConnection(conn);
-			
-//			int admin = memberDao.adminManagementUpdate(memberDto);
-			int result = memberDao.memberManagementUpdate(memberDto);
-
-//			if(admin == 0) {
-//				System.out.println("관리자 정보 조회가 실패하였습니다.");
-//			}
-			
-			if(result == 0){
-				System.out.println("회원 정보 조회가 실패하였습니다.");
 			}
-			
 			res.sendRedirect("./list");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

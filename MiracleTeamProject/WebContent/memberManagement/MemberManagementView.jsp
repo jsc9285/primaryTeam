@@ -28,6 +28,8 @@
 
 	<h1>회원관리</h1>
 	
+	<c:if test="${member.email == 'admin'}">
+	
 	<h3>관리자 목록</h3>
 	<table>
 		<tr>
@@ -47,29 +49,31 @@
 				수정/삭제
 			</th>
 		</tr>
-		<c:forEach var='adminDto' items='${adminList}'>
-			<tr>
-				<td id='noStyle'>
-					${adminDto.no}
-				</td>
-				<td>
-					${adminDto.name}
-				</td>
-				<td>
-					${adminDto.email}
-				</td>
-				<td>
-					${adminDto.password}
-				</td>
-				<td>
-					<a href='./update?adNo=${adminDto.no}'>[수정]</a>
-				</td>
-				<td>
-					<a href='./delete?adNo=${adminDto.no}'>[삭제]</a>
-				</td>
-			</tr>
-		</c:forEach>
+			<c:forEach var='adminDto' items='${adminList}'>
+				<tr>
+					<td id='noStyle'>
+						${adminDto.no}
+					</td>
+					<td>
+						${adminDto.name}
+					</td>
+					<td>
+						${adminDto.email}
+					</td>
+					<td>
+						${adminDto.password}
+					</td>
+					<td>
+						<a href='./update?adNo=${adminDto.no}'>[수정]</a>
+					</td>
+					<td>
+						<a href='./delete?adNo=${adminDto.no}'>[삭제]</a>
+					</td>
+				</tr>
+			</c:forEach>
 	</table>
+	</c:if>
+	
 	
 	<h3>회원 목록</h3>
 	
@@ -105,12 +109,17 @@
 				<td>
 					${memberDto.password}
 				</td>
-				<td>
-					<a href='./update?mmNo=${memberDto.no}'>[수정]</a>
-				</td>
-				<td>
-					<a href='./delete?mmNo=${memberDto.no}'>[삭제]</a>
-				</td>
+				<c:if test="${member.no == memberDto.no || member.email == 'admin'}">
+					<td>
+						<a href='./update?mmNo=${memberDto.no}'>[수정]</a>
+					</td>
+					<td>
+						<a href='./delete?mmNo=${memberDto.no}'>[삭제]</a>
+					</td>
+				</c:if>
+				<c:if test="${member.no != memberDto.no && member.email != 'admin'}">
+					<td colspan="2"></td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>
