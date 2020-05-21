@@ -35,7 +35,7 @@
 </head>
 
 <body>
-
+<jsp:include page="../common/Header.jsp"/>
 	<div id="wrap">
 	    <br>
 	    <div id="topForm">
@@ -83,6 +83,6 @@
 	        </form>    
 	    </div>
 	</div>   
-
+<jsp:include page="../common/Bottom.jsp"/>
 </body>
 </html>

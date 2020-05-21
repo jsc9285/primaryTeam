@@ -99,8 +99,8 @@ public class BoardManagementDao {
 		     
 		         pstmt = conn.prepareStatement(sql);
 
-		         pstmt.setString(1, writer);
-		         pstmt.setString(2, title);
+		         pstmt.setString(1, title);
+		         pstmt.setString(2, writer);
 		         pstmt.setString(3, context);
 
 		         result = pstmt.executeUpdate();
@@ -132,7 +132,7 @@ public class BoardManagementDao {
 
 		      String sql = "";
 
-		      sql += "SELECT TITLE, WRITER, CONTEXT";
+		      sql += "SELECT WRITER, TITLE, CONTEXT";
 	      	  sql += " FROM BOARD_POST";
 	      	  sql += " WHERE NO = ?";
 	      	  
@@ -149,8 +149,8 @@ public class BoardManagementDao {
 		         String context = "";
 
 		         if (rs.next()) {
-		        	title = rs.getString("TITLE");
 		        	writer = rs.getString("WRITER");
+		        	title = rs.getString("TITLE");
 		        	context = rs.getString("CONTEXT");
 //		        	no = rs.getInt("NO");	
 

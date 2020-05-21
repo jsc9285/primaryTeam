@@ -31,7 +31,7 @@
 </head>
 
 <body>
-
+<jsp:include page="../common/Header.jsp"/>
 	<br>
 	    <b><font size="6" color="gray">글수정</font></b>
 	    <br>
@@ -42,7 +42,7 @@
 	        <tr>
 	            <td id="title">작성자</td>
 	            <td>
-	            	<input name="writer" type="text" value="${boardManagementDto.writer}">
+	            	<input name="writer" type="text" value="${member.name}">
 	            </td>
 	        </tr>
 	            <tr>
@@ -80,6 +80,6 @@
 	        </tr>
 	    </table>    
 	</form>
-
+<jsp:include page="../common/Bottom.jsp"/>
 </body>
 </html>
