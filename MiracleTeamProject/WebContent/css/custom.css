@@ -35,7 +35,7 @@ button {
 	background-color: #fff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
-
+ 
 .member-card-layout-inner {
 	margin: 0 40px;
 	padding-bottom: 40px;
@@ -48,8 +48,7 @@ button {
 }
 
 .member-card-layout__logo-image {
-	width: 128px;
-	height: 32px;
+	width: 160px;
 }
 
 .info-div {
