@@ -2,7 +2,6 @@ package mtp.notice.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -12,13 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mtp.login.dao.MemberDao;
-import mtp.login.dto.MemberDto;
 import mtp.notice.dao.NoticeDao;
 import mtp.notice.dto.NoticeDto;
 
-@WebServlet(value = "/noticeBoard/post")
-public class NoticePostServlet extends HttpServlet{
+@WebServlet(value = "/noticeBoard/update")
+public class NoticeUpdateServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, 
@@ -32,20 +29,25 @@ public class NoticePostServlet extends HttpServlet{
 			ServletContext sc = this.getServletContext();
 			conn = (Connection) sc.getAttribute("conn");
 			
-			int no = Integer.parseInt(req.getParameter("no")); // 접속자의 회원번호(no)를 받아옴
-			
 			// DB 연결( 회원정보(MemberDto), 게시물정보(NoticeDto) )
-			MemberDao memberDao = new MemberDao();
-			memberDao.setConnection(conn);
-			// 접속된 MemberDto의 정보를 조회하는 Dao 함수 
-			MemberDto memberDto = new MemberDto();
+//			MemberDao memberDao = new MemberDao();
+//			memberDao.setConnection(conn);
 			
-			memberDto = memberDao.memberSelectOne(no);
-			req.setAttribute("memberDto", memberDto);
+			NoticeDao noticeDao = new NoticeDao();
+			noticeDao.setConnection(conn);
 			
+			int no = Integer.parseInt(req.getParameter("no"));
+			
+			// no를 활용하여 업데이트 선택된 정보가 출력되게 !
+			NoticeDto noticeDto = new NoticeDto();
+			
+			noticeDto = noticeDao.noticeSelectOne(no);
+			
+			req.setAttribute("noticeDto", noticeDto);
+
 			// 공지사항게시판폼으로 이동
 			RequestDispatcher rd = 
-					req.getRequestDispatcher("./noticeBoardPost.jsp");
+					req.getRequestDispatcher("./noticeBoardUpdate.jsp");
 			rd.forward(req, res);
 		} catch (Exception e) {
 			req.setAttribute("error", e);
@@ -59,7 +61,7 @@ public class NoticePostServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, 
 			HttpServletResponse res) 
 					throws ServletException, IOException {
-				
+		
 		Connection conn = null;
 		
 		try {
@@ -67,30 +69,35 @@ public class NoticePostServlet extends HttpServlet{
 			ServletContext sc = this.getServletContext();
 			conn = (Connection) sc.getAttribute("conn");
 			
+			int no = Integer.parseInt(req.getParameter("no"));
 			String title = req.getParameter("title");
 			String writer = req.getParameter("writer");
 			String context = req.getParameter("context");
 			
 			NoticeDto noticeDto = new NoticeDto();
+			
+			noticeDto.setNo(no);
 			noticeDto.setTitle(title);
 			noticeDto.setWriter(writer);
 			noticeDto.setContext(context);
 			
 			NoticeDao noticeDao = new NoticeDao();
 			noticeDao.setConnection(conn);
-			noticeDao.noticeInsert(noticeDto);
-
-			// 메인 페이지로 이동
-			res.sendRedirect("./list");
 			
+			int result = noticeDao.noticeUpdate(noticeDto);
+			
+			if(result == 0) {
+				System.out.println("수정이 실행되지 않았습니다");
+			}
+			
+			// 공지사항게시판폼으로 이동
+			res.sendRedirect("./list");
 		} catch (Exception e) {
-			e.printStackTrace();
 			req.setAttribute("error", e);
 			RequestDispatcher rd = 
 					req.getRequestDispatcher("/Error.jsp");
 			rd.forward(req, res);
 		} // catch End
 		
-	}
-	
+	} // doPost End
 }

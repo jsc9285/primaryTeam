@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mtp.login.dao.MemberDao;
+import mtp.login.dto.MemberDto;
 import mtp.notice.dao.NoticeDao;
 import mtp.notice.dto.NoticeDto;
 
@@ -31,9 +33,15 @@ public class NoticeServlet extends HttpServlet{
 			conn = (Connection) sc.getAttribute("conn");
 			
 			// DB 연결( 회원정보(MemberDto), 게시물정보(NoticeDto) )
-//			MemberDao memberDao = new MemberDao();
-//			memberDao.setConnection(conn);
+			MemberDao memberDao = new MemberDao();
+			memberDao.setConnection(conn);
 			
+			MemberDto memberDto = new MemberDto();
+			
+			memberDto = memberDao.memberSelectOne(1);
+			
+			req.setAttribute("memberDto", memberDto);
+			// 아래는 게시판
 			NoticeDao noticeDao = new NoticeDao();
 			noticeDao.setConnection(conn);
 			

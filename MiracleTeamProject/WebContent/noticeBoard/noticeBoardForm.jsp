@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,8 @@
 
 <script type="text/javascript">
 	function writeForm() {
-		location.href = "noticeBoardWrite.jsp";
+		// ★멤버DB 받으면할 것 !★ 메인화면에서 post로 넘어갈 때 회원의 no를 넘겨줘서
+		//					post서블릿(get)에서 no를 통해 회원의 정보를 조회하여 post폼으로 넘김
 	}
 </script>
 </head>
@@ -37,25 +39,25 @@
 	<div id="wrap">
 		<br>
 		<div id="topForm">
-			<input type="button" value="글쓰기" onclick="writeForm()">
+			<input type="button" value="글쓰기" onclick="location.href = './post?no=${memberDto.no}'">
 		</div>
 		<br>
 		<div id="board">
 			<table id="bList" width="800" border="3" bordercolor="lightgray">
 				<tr heigh="30">
-					<td>글번호</td>
-					<td>제목</td>
-					<td>작성자</td>
-					<td>작성일</td>
-					<td>조회수</td>
+					<td style="width: 100px;">글번호</td>
+					<td style="width: 550px;">제목</td>
+					<td style="width: 150px;">작성자</td>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-					<td>1</td>
-				</tr>
+				
+				<c:forEach var="notice" items="${noticeList}">
+					<tr>
+						<td>${notice.no}</td>
+						<td><a href='./update?no=${notice.no }'>${notice.title}</a></td>
+						<td>${notice.writer}</td>
+					</tr>
+				</c:forEach>
+
 			</table>
 		</div>
 		<br>
