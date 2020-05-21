@@ -26,23 +26,30 @@ public class MemberManagementUpdate extends HttpServlet{
 		RequestDispatcher rd = null;
 
 		String mNo = "";
+		String aNo = "";
 
 		try {
-			mNo = req.getParameter("no");
-			int no = Integer.parseInt(mNo);
+			mNo = req.getParameter("mmNo");
+			aNo = req.getParameter("adNo");
 			
 			ServletContext sc = this.getServletContext();
-
+			
 			conn = (Connection) sc.getAttribute("conn");
 			
 			MemberDao memberDao = new MemberDao();
 			memberDao.setConnection(conn);
 			
-			MemberDto memberDto = memberDao.memberSelectThis(no);
-//			MemberDto adminDto = memberDao.adminSelectThis(adNo);
+			if (mNo != null) {
+				int no = Integer.parseInt(mNo);
+				MemberDto memberDto = memberDao.memberSelectThis(no);
+				req.setAttribute("memberDto", memberDto);
+				
+			} else if (aNo != null) {
+				int abNo = Integer.parseInt(aNo);
+				MemberDto adminDto = memberDao.adminSelectThis(abNo);
+				req.setAttribute("adminDto", adminDto);
+			}
 			
-			req.setAttribute("memberDto", memberDto);
-//			req.setAttribute("adminDto", adminDto);
 			rd = req.getRequestDispatcher("./MemberManagementUpdateView.jsp");
 			rd.forward(req, res);
 

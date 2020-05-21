@@ -15,4 +15,5 @@
 		<a style="text-align: right;">${sessionScope.member.name}</a>
 		<a style="text-align: right;" onclick="PageMoveFnc('/auth/logout');">로그아웃</a>
 	</c:if>
+
 </div>

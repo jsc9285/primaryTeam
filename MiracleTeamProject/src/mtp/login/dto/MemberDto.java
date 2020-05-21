@@ -9,7 +9,7 @@ public class MemberDto {
 	public MemberDto() {
 		super();
 	}
-
+	
 	public MemberDto(int no, String name, String email, String password) {
 		super();
 		this.no = no;

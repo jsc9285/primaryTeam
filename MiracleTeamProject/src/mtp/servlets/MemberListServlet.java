@@ -31,6 +31,7 @@ public class MemberListServlet extends HttpServlet{
 			conn = (Connection) sc.getAttribute("conn");
 			
 			MemberDao memberDao = new MemberDao();
+			
 			memberDao.setConnection(conn);
 			
 			ArrayList<MemberDto> memberList = null;

@@ -30,13 +30,13 @@ public class MemberManagement extends HttpServlet {
 			MemberDao memberDao = new MemberDao();
 			memberDao.setConnection(conn);
 
-//			ArrayList<MemberDto> adminList = null;
-//			adminList = (ArrayList<MemberDto>)memberDao.adminCheck();
+			ArrayList<MemberDto> adminList = null;
+			adminList = (ArrayList<MemberDto>)memberDao.adminCheck();
 			
 			ArrayList<MemberDto> memberList = null;
 			memberList = (ArrayList<MemberDto>)memberDao.memberCheck();
 			
-//			req.setAttribute("adminList", adminList);
+			req.setAttribute("adminList", adminList);
 			req.setAttribute("memberList", memberList);
 			
 			res.setContentType("text/html");

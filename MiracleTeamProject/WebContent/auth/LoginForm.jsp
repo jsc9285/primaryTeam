@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/NewFile4.css" />
+<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.1" />
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
 
@@ -101,18 +101,14 @@
 
 					<h1 class="member-card-layout__logo">
 						<img class="member-card-layout__logo-image"
-							src="../img/lolImg.	PNG" alt="로고">
+							src="../img/pika.gif" alt="로고">
 					</h1>
 					<div class="info-div">
-						
-						<div class="or-line">
-							<hr class="hr-left">
-							OR
-							<hr class="hr-right">
-						</div>
+					
+
 									<!--onsubmit="return nextStepFnc();"   -->
 						<form id="formFirst" action="./login" method="post" onsubmit="return nextStepFnc();">
-							<h2 class="login__email-title">이메일 로그인</h2>
+
 							<div class="input-box">
 								<label class="member-input__label" for="email-input">이메일
 									주소</label> <input class="input-contents" type="text" id="email-input"
@@ -128,17 +124,17 @@
 							<!--오류메시지  -->
 							<div class="member-input-wrong-message"></div>
 
-							<div class="checks">
-								<div class="login-check">
-									<input id="ex_chk" type="checkbox"> <label for="ex_chk"
-										class="login-check-box-label">로그인 상태 유지하기</label>
-								</div>
-								
-							</div>
 							<input id="target" type="submit" class="login-button" value="로그인"
 								disabled>
+								<div class="checks">
+									<div class="login-check">
+										<input id="ex_chk" type="checkbox"> <label for="ex_chk"
+											class="login-check-box-label">관리자로그인</label>
+									</div>
+									
+								</div>
 							<div class="hello-text">
-								ㅁㅁㅁㅁㅁㅁ에 처음이세요?<span class="signUp-link"><a
+								처음 방문이신가요?<span class="signUp-link"><a
 									class="member-link" href="../member/add">회원가입하기</a></span>
 							</div>
 						</form>
