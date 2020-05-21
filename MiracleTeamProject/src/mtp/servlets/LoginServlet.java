@@ -2,6 +2,9 @@ package mtp.servlets;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -49,8 +52,18 @@ public class LoginServlet extends HttpServlet {
 
 			MemberDao memberDao = new MemberDao();
 			memberDao.setConnection(conn);
-			MemberDto memberDto = memberDao.memberExist(email, pwd);
 			
+			MemberDto memberDto = new MemberDto();
+			
+			System.out.println(email);
+			
+			if(email.equals("admin")) { // 게스트
+				memberDto = memberDao.memberExist(email, pwd);
+			}else{ // 관리자
+				memberDto = memberDao.guestExist(email, pwd);
+			}		
+			
+			System.out.println(memberDto);
 			// 회원이 없다면 로그인 실패 페이지로 이동
 			if(memberDto == null) {
 				RequestDispatcher rd = 
@@ -61,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("member", memberDto);
 				
-				res.sendRedirect("../member/list");
+				res.sendRedirect("../noticeBoard/list");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -50,21 +50,19 @@ public class MemberAddServlet extends HttpServlet{
 		MemberDao memberDao = new MemberDao();
 		
 		memberDao.setConnection(conn);
-		
 		// 0이면 못 넣음 0이외에는 성공
 		int result;
 		try {
 			result = memberDao.memberInsert(memberDto);
-			
 			if(result == 0){
 				System.out.println("회원가입 실패");
 			}
 			
-			res.sendRedirect("./list");
+			res.sendRedirect("../auth/Loginok.jsp");
 		} catch (Exception e) {
 			req.setAttribute("error", e);
 			RequestDispatcher dispatcher = 
-					req.getRequestDispatcher("/Error.jsp");
+					req.getRequestDispatcher("../common/Error.jsp");
 			dispatcher.forward(req, res);
 		}
 		

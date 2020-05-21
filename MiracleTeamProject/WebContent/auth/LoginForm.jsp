@@ -13,13 +13,12 @@
 		var inputObj = document.getElementsByTagName('input');
 		var placeObj = document.getElementsByClassName('member-input__label');
 
-
 		for (var i = 0; i < 2; i++) {
 			inputObj[i].addEventListener('focus', placeFlyFnc)
 			inputObj[i].addEventListener('blur', placeDownFnc)
 			inputObj[i].addEventListener('keyup', submitFnc)
 		}
-
+		
 	}
 
 	function placeFlyFnc() {
@@ -129,7 +128,7 @@
 								<div class="checks">
 									<div class="login-check">
 										<input id="ex_chk" type="checkbox"> <label for="ex_chk"
-											class="login-check-box-label">관리자로그인</label>
+											class="login-check-box-label">심심하면 눌러보세요</label>
 									</div>
 									
 								</div>

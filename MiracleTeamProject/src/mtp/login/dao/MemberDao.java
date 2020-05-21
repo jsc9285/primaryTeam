@@ -22,7 +22,7 @@ public class MemberDao {
 		ResultSet rs = null;
 
 		String sql = "SELECT NO, NAME, EMAIL";
-		sql += " FROM MEMBER_MANAGER";
+		sql += " FROM MEMBER_GUEST";
 		sql += " ORDER BY NO ASC";
 
 		try {
@@ -87,20 +87,22 @@ public class MemberDao {
 			String email = memberDto.getEmail();
 			String pwd = memberDto.getPassword();
 			String name = memberDto.getName();
-
-			String sql = "INSERT INTO MEMBER_MANAGER" 
-			+ " (NO, EMAIL, PWD, NAME)"
-			+ " VALUES(NO_MANAGER_CHECK.NEXTVAL"
-			+ " , ?, ?, ?)";
-
+			
+			String sql = "INSERT INTO MEMBER_GUEST" 
+					+ " (NO, NAME, EMAIL, PWD)"
+					+ " VALUES(NO_GUEST_CHECK.NEXTVAL"
+					+ " , ?, ?, ?)";
+			
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			pstmt.setString(3, pwd);
 
-			pstmt.setString(1, email);
-			pstmt.setString(2, pwd);
-			pstmt.setString(3, name);
+			System.out.println(sql);
 
 			result = pstmt.executeUpdate();
-
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw e;
@@ -126,7 +128,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		String sql = "";
-		sql = "DELETE FROM MEMBER_MANAGER";
+		sql = "DELETE FROM MEMBER_GUEST";
 		sql += " WHERE NO = ?";
 
 		try {
@@ -167,7 +169,7 @@ public class MemberDao {
 		String sql = "";
 
 		sql = "SELECT NO, EMAIL, NAME";
-		sql += " FROM MEMBER_MANAGER";
+		sql += " FROM MEMBER_GUEST";
 		sql += " WHERE NO =?";
 
 		try {
@@ -228,7 +230,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		String sql = "";
-		sql = "UPDATE MEMBER_MANAGER";
+		sql = "UPDATE MEMBER_GUEST";
 		sql += " SET EMAIL=?, NAME=?";
 		sql += " WHERE NO =?";
 
@@ -309,6 +311,71 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		// 회원이 조회가 안된 경우
+		return null;
+	}
+	
+	//사용자 존재 유무 없으면 null 리턴
+	public MemberDto guestExist(String email, String pwd) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		sql += "SELECT NAME, EMAIL";
+		sql += " FROM MEMBER_GUEST";
+		sql += " WHERE EMAIL = ?";
+		sql += " AND PWD = ?";
+		
+		String name = "";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int colIndex = 1;
+			
+			pstmt.setString(colIndex++, email);
+			pstmt.setString(colIndex, pwd);
+			
+			rs = pstmt.executeQuery();
+			
+			MemberDto memberDto = new MemberDto();
+			
+			if(rs.next()) {
+				email = rs.getString("email");
+				name = rs.getString("name");
+				
+				memberDto.setEmail(email);
+				memberDto.setName(name);
+				
+				// 회원 정보 조회 확인
+				return memberDto;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		} finally {
+			
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			try {
 				if (pstmt != null) {
 					pstmt.close();
