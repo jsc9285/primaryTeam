@@ -1,0 +1,287 @@
+@charset "UTF-8";
+
+body, html {
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	vertical-align: baseline;
+}
+
+div {
+	display: block;
+}
+
+hr {
+	border: 0;
+}
+
+button {
+	border: 0;
+}
+
+	#header {
+		height: 40px;
+		background-color: #232F46;
+	}
+	.headerImgL{ 
+	height: 40px;
+	float: left;
+	}
+	#yasuo{
+		height: 32px;
+		margin-bottom: 4px;
+		margin-top: 4px;
+		margin-left: 40px;
+	}
+	.headerImgR{ 
+		height: 40px;
+		float: right;
+	}
+	#loginBtn {
+		height: 28px;
+		width: 70px;
+		margin-bottom: 6px;
+		margin-top: 6px;
+		background-color: #5383E8;
+		margin-right: 20px;
+		border: 1px solid #5383E8;
+		border-radius: 6px;
+		color: white;
+	}
+	.selectBox {
+		height: 28px;
+		float: right;
+		margin-top: 6px;
+		margin-right: 18px;
+		margin-bottom: 6px;
+		background-color: #232F46;
+		color: white;
+		border: 1px solid #232F46;
+	}
+	#selectBox1{
+		width: 150px;
+		float: left;
+	}
+	#selectBox2{
+		width: 66px;
+		float: right;
+	}
+
+#root {
+	position: relative;
+	min-height: 100%;
+	background-color: #f3f5f7;
+}
+
+.member-card-layout {
+	padding: 170px 0 200px;
+}
+
+.member-card {
+	position: relative;
+	margin: 0 auto;
+	width: 450px;
+	height: 726px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+
+.member-card-layout-inner {
+	margin: 0 40px;
+	padding-bottom: 40px;
+}
+
+.member-card-layout__logo {
+	padding-top: 48px;
+	text-align: center;
+	margin-bottom: 42px;
+}
+
+.member-card-layout__logo-image {
+	width: 128px;
+	height: 32px;
+}
+
+.info-div {
+	width: 370px;
+	height: 562px;
+}
+
+.easy-login {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.facebook-bnt {
+	width: 370px;
+	height: 56px;
+	background-color: #3c5a99;
+	border-radius: 3px;
+	padding: 3px 0px 0px 2px;
+	box-sizing: border-box;
+}
+
+.apple-bnt {
+	width: 370px;
+	height: 56px;
+	background-color: #212529;
+	border-radius: 3px;
+	margin-top: 12px;
+	padding: 3px 0px 0px 2px;
+	box-sizing: border-box;
+}
+
+.or-line {
+	width: 370px;
+	height: 14px;
+	margin-top: 24px;
+	font-weight: 400;
+	font-size: 12px;
+	color: #c5cbd0;
+	vertical-align: top;
+	text-align: center;
+	line-height: 14px;
+}
+
+.hr-left, .hr-right {
+	display: block;
+	width: 160px;
+	height: 1px;
+	background-color: #dddfe4
+}
+
+.hr-left {
+	float: left;
+}
+
+.hr-right {
+	float: right;
+}
+
+.login__email-title {
+	margin-top: 42px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px
+}
+
+.input-box {
+	width: 370px;
+	height: 41px;
+	margin-top: 27px;
+	position: relative;
+	padding: 10px 0 11px;
+	border-bottom: 1px solid #dddfe4;
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+.email-input {
+	margin-top: 27px;
+	position: relative;
+	padding: 10px 0 11px;
+	border-bottom: 1px solid #dddfe4;
+}
+
+.input-contents {
+	position: relative;
+	z-index: 10;
+	border: 0;
+	padding: 0;
+	background-color: transparent;
+	outline: 0;
+	width: 400px;
+	font-size: 16px;
+}
+
+.member-input__label {
+	color: #7b858e;
+	position: absolute;
+	left: 0;
+	top: 11px;
+}
+
+.find-box {
+	width: 370px;
+	height: 40px;
+}
+
+.login-check {
+	width: 180px;
+	height: 24px;
+	margin-top: 16px;
+	float: left;
+}
+
+.login-check-box {
+	width: 22px;
+	height: 22px;
+	cursor: pointer;
+	margin: 0px;
+}
+
+.login-check-box-label {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #52595f;
+	line-height: 17px;
+}
+
+.find-password-box {
+	float: right;
+	margin-top: 20px;
+}
+
+.find-passwor-text {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #1ea1f7;
+}
+
+.login-button {
+	font-size: 16px;
+	border-radius: 3px;
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	border: 0;
+	height: 56px;
+	margin-top: 40px;
+	width: 100%;
+	padding: 0 20px;
+	font-weight: 700;
+	text-align: center;
+	background-color: #DDDFE4
+}
+
+.hello-text {
+	position: relative;
+	text-align: center;
+	margin-top: 16px;
+}
+
+.signUp-link {
+	margin-left: 12px;
+}
+
+.member-link {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #1ea1f7;
+	text-decoration: underline;
+}
+
+.select-language-btn {
+	border-radius: 3px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    border: 0;
+    padding-right: 32px;
+    height: 24px;
+    color: #52595f;
+}

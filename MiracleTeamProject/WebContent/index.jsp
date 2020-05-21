@@ -18,9 +18,9 @@
 	<div style="text-align: center;">
 		<h1>테스트용 임시 페이지 이동</h1>
 		<p onclick="PageMoveFnc('/noticeBoard/list');">김홍</p>
-		<p onclick="pageMoveFnc('')">이환상</p>
-		<p onclick="pageMoveFnc('')">이용훈</p>
-		<p onclick="pageMoveFnc('')">김윤진</p>		
+		<p onclick="PageMoveFnc('');">이환상</p>
+		<p onclick="PageMoveFnc('');">이용훈</p>
+		<p onclick="PageMoveFnc('/auth/login');">김윤진</p>		
 	</div>
 	
 </body>
