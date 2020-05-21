@@ -31,7 +31,7 @@
 </head>
 
 <body>
-
+<jsp:include page="../common/Header.jsp"/>
 	<br>
 	    <b><font size="6" color="gray">글수정</font></b>
 	    <br>
@@ -80,6 +80,6 @@
 	        </tr>
 	    </table>    
 	</form>
-
+<jsp:include page="../common/Bottom.jsp"/>
 </body>
 </html>
