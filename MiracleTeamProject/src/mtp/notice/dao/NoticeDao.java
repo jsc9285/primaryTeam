@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import mtp.notice.dto.NoticeDto;
@@ -18,18 +19,69 @@ public class NoticeDao {
 		this.conn = conn;
 	}
 	
-	public List<NoticeDto> selectList() throws Exception {
+	public List<NoticeDto> selectList(HashMap<String, Object> listOpt) throws Exception {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
-		String sql = "SELECT NO, TITLE, WRITER, CONTEXT";
-		sql += " FROM NOTICE_POST";
-		sql += " ORDER BY NO ASC";
-
-		try {
+		
+		String opt = (String)listOpt.get("opt");
+		String condition = (String)listOpt.get("condition");
+		int start = (Integer)listOpt.get("start");
+		
+		String sql = "";
+		if(opt == null) {
+			sql = "SELECT *";
+			sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM NOTICE_POST)";
+			sql += " WHERE rnum>=? and rnum<=?";			
+			sql += " ORDER BY NO ASC";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, start+9);
+		}else if(opt.equals("0")) {
+			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE TITLE LIKE ?";
+			sql += " ORDER BY NO ASC";
+			
 			pstmt = conn.prepareStatement(sql);
 
+			pstmt.setString(1, "%" + condition + "%");
+		}else if(opt.equals("1")) {
+			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE CONTEXT LIKE ?";
+			sql += " ORDER BY NO ASC";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + condition + "%");
+		}else if(opt.equals("2")) {
+			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE TITLE LIKE ?";
+			sql += " OR CONTEXT LIKE ?";
+			sql += " ORDER BY NO ASC";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + condition + "%");
+			pstmt.setString(2, "%" + condition + "%");
+		}else if(opt.equals("3")) {
+			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE WRITER LIKE ?";
+			sql += " ORDER BY NO ASC";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + condition + "%");
+		}
+		
+		
+		try {			
 			rs = pstmt.executeQuery();
+			sql = "";
 
 			ArrayList<NoticeDto> noticeList = new ArrayList<NoticeDto>();
 			
@@ -79,6 +131,91 @@ public class NoticeDao {
 		} // finally End
 
 	} // SelectList End
+	
+	public int listCount(HashMap<String, Object> listOpt) throws Exception {		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String opt = (String)listOpt.get("opt");
+		String condition = (String)listOpt.get("condition");
+		
+		String sql = "";
+		if(opt == null) {
+			sql = "SELECT COUNT(*)";
+			sql += " FROM NOTICE_POST";
+			
+			pstmt = conn.prepareStatement(sql);			
+		}else if(opt.equals("0")) {
+			sql = "SELECT COUNT(*)";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE TITLE LIKE ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + condition + "%");
+		}else if(opt.equals("1")) {
+			sql = "SELECT COUNT(*)";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE CONTEXT LIKE ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + condition + "%");
+		}else if(opt.equals("2")) {
+			sql = "SELECT COUNT(*)";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE TITLE LIKE ?";
+			sql += " OR CONTEXT LIKE ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + condition + "%");
+			pstmt.setString(2, "%" + condition + "%");
+		}else if(opt.equals("3")) {
+			sql = "SELECT COUNT(*)";
+			sql += " FROM NOTICE_POST";
+			sql += " WHERE WRITER LIKE ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + condition + "%");
+		}		
+		
+		try {			
+			rs = pstmt.executeQuery();
+			sql = "";
+			
+			if(rs.next()) result = rs.getInt(1);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} // finally End
+		
+		return result;
+	}
 	
 	public int noticeInsert(NoticeDto noticeDto) {
 		int result = 0;

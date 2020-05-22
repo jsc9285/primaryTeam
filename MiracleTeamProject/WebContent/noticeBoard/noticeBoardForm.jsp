@@ -24,6 +24,18 @@
 #bList {
 	text-align: center;
 }
+
+.pageBtn{
+	display:inline-block;
+	border: 1px solid #CD5C5C;	
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;	
+	color: #fff;
+	font-size: 13px;
+	text-decoration: none; 
+	background-color: #CD5C5C; 	
+}
 </style>
 
 </head>
@@ -57,17 +69,35 @@
 			</table>
 		</div>
 		<br>
-		<div id="pageForm">페이지 번호</div>
+		<div id="pageForm">
+			<c:if test="${startPage != 1}">
+				<a href='.list?page=${startPage-1}'>[ 이전 ]</a>			
+			</c:if>
+		
+			<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
+				<c:if test="${pageNum == spage}">
+					<a class='pageBtn'>${pageNum}&nbsp;</a>
+				</c:if>
+				<c:if test="${pageNum != spage}">
+					<a class='pageBtn' href="./list?page=${pageNum}">${pageNum}&nbsp;</a>
+				</c:if>
+			</c:forEach>
+			
+			<c:if test="${endPage != maxPage}">
+				<a href='.list?page=${endPage+1}'>[ 다음 ]</a>			
+			</c:if>
+		</div>
 		<br>
 		<div id="searchForm">
-			<form>
+			<form action="./list" method="get">
 				<select name="opt">
 					<option value="0">제목</option>
 					<option value="1">내용</option>
 					<option value="2">제목+내용</option>
-					<option value="3">글쓴이</option>
-				</select> <input type="text" size="20" name="condition" />&nbsp; <input
-					type="submit" value="검색" />
+					<option value="3">작성자</option>
+				</select>
+					<input type="text" size="20" name="condition" />&nbsp;
+					<input type="submit" value="검색" />
 			</form>
 		</div>
 	</div>
