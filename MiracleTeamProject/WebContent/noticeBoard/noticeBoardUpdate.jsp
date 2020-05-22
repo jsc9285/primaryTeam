@@ -52,7 +52,7 @@
 				<td colspan="5">
 					<input type="submit" value="수정"> 
 					<input type="button" value="삭제" onclick="location.href = './delete?no=${noticeDto.no}'"> 
-					<input type="button" value="목록">
+					<input type="button" value="목록" onclick="location.href = './list'">
 				</td>
 			</tr>
 		</table>

@@ -26,7 +26,7 @@
 		<table width="700" border="3" bordercolor="lightgray" align="center">
 			<tr>
 				<td class="title1">작성자</td>
-				<td><input type="text" name='writer' value='${memberDto.name}'/></td>
+				<td><input type="text" name='writer' value='${member.name}'/></td>
 			</tr>
 			<tr>
 				<td class="title1">제 목</td>

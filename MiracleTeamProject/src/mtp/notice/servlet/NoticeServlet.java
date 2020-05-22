@@ -3,6 +3,7 @@ package mtp.notice.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -36,8 +37,7 @@ public class NoticeServlet extends HttpServlet{
 			MemberDao memberDao = new MemberDao();
 			memberDao.setConnection(conn);
 			
-			MemberDto memberDto = new MemberDto();
-			
+			MemberDto memberDto = new MemberDto();	
 			memberDto = memberDao.memberSelectOne(1);
 			
 			req.setAttribute("memberDto", memberDto);
@@ -45,10 +45,40 @@ public class NoticeServlet extends HttpServlet{
 			NoticeDao noticeDao = new NoticeDao();
 			noticeDao.setConnection(conn);
 			
+			// 게시물 목록 및 검색 데이터 조회	
+			int spage = 1;
+			String page = req.getParameter("page"); // 페이지번호를 눌렀을 경우 ! 받아서 spage를 변경시킨다
+			String opt = req.getParameter("opt");
+			String condition = req.getParameter("condition");
+			
+			if(page != null) {
+				spage = Integer.parseInt(page);
+			}
+			
+			HashMap<String, Object> listOpt = new HashMap<String, Object>();
+			listOpt.put("opt", opt);
+			listOpt.put("condition", condition);
+			listOpt.put("start", spage*10-9);			
+			
 			// 게시물 정보 읽기 ( 			
 			ArrayList<NoticeDto> noticeList = null;
-			noticeList = (ArrayList<NoticeDto>)noticeDao.selectList();
+			int listCount = noticeDao.listCount(listOpt);
+			noticeList = (ArrayList<NoticeDto>)noticeDao.selectList(listOpt);
 			
+			 // 전체 페이지 수
+	        int maxPage = (int)(listCount/10.0 + 0.9);
+	        //시작 페이지 번호
+	        int startPage = (int)(spage/5.0 + 0.8) * 5 - 4;
+	        //마지막 페이지 번호
+	        int endPage = startPage + 4;
+	        if(endPage > maxPage)    endPage = maxPage;
+	        
+	        // 4개 페이지번호 저장
+	        req.setAttribute("spage", spage);
+	        req.setAttribute("maxPage", maxPage);
+	        req.setAttribute("startPage", startPage);
+	        req.setAttribute("endPage", endPage);
+
 			// 데이터 전달을 위해 request에  데이터 보관
 			req.setAttribute("noticeList", noticeList);
 			
