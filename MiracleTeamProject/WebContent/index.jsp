@@ -17,13 +17,15 @@
 
 <body>
 
-	<div style="text-align: center;">
-		<h1>테스트용 임시 페이지 이동</h1>
-		<p onclick="PageMoveFnc('/noticeBoard/list');">김홍</p>
-		<p onclick="PageMoveFnc('/boardManagement/list');">이환상</p>
-		<p onclick="PageMoveFnc('/memberManagement/list');">이용훈</p>
-		<p onclick="PageMoveFnc('/auth/login');">김윤진</p>		
+	<jsp:include page="/common/Header.jsp" />
+
+	<div style="width: 1000px; margin: auto; background-color: #f3f5f7; text-align: center;">
+		<p onclick="PageMoveFnc('/auth/login');">
+			<img style="width: 1000px; height: 600px;" src="./img/pika.gif" alt="MainImg">
+		</p>		
 	</div>
+	
+	<jsp:include page="/common/Bottom.jsp" />
 	
 </body>
 </html>

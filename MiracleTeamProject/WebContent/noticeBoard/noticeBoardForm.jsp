@@ -71,6 +71,7 @@
 			</form>
 		</div>
 	</div>
+	<br>
 	
 	<jsp:include page="/common/Bottom.jsp" />
 
