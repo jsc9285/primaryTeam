@@ -356,8 +356,10 @@ public class MemberDao {
 				email = rs.getString("email");
 				name = rs.getString("name");
 				
+				memberDto.setNo(rs.getInt("no"));
 				memberDto.setEmail(email);
 				memberDto.setName(name);
+				memberDto.setPassword(rs.getString("pwd"));
 				
 				// 회원 정보 조회 확인
 				return memberDto;
