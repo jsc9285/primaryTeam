@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mtp.dao.MemberDao;
+import mtp.dto.MemberDto;
 
 @WebServlet(value = "/memberManagement/delete")
 public class MemberManagementDelete extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
 		Connection conn = null;
 
 		String mNo = "";
@@ -34,25 +36,46 @@ public class MemberManagementDelete extends HttpServlet {
 			MemberDao memberDao = new MemberDao();
 			memberDao.setConnection(conn);
 			
-			if (mNo != null) {
-				int no = Integer.parseInt(mNo);
-				int result = memberDao.MemberDataDelete(no);
-				if (result == 0) {
-					System.out.println("회원 삭제를 실패하였습니다.");
-				}
-			} else if (aNo != null) {
-				int abNo = Integer.parseInt(aNo);
-				int admin = memberDao.adminDataDelete(abNo);
-				if (admin == 0) {
-					System.out.println("관리자 삭제를 실패하였습니다.");
-				}
+//			 회원일때 실행
+//			MemberDto memberDto = new MemberDto();
+			
+//			String email = memberDto.getEmail();
+			String email = req.getParameter("email");
+			System.out.println(email);
+			if (email != "admin") {
+				if (mNo != null) {
+					int no = Integer.parseInt(mNo);
+					int result = memberDao.MemberDataDelete(no);
+					if (result == 0) {
+						System.out.println("회원 삭제를 실패하였습니다.");
+					}
+				res.sendRedirect(req.getContextPath() + "/auth/logout");
 			}
+//			 관리자일때 실행
+			if (email == "admin") {
+					if (mNo != null) {
+						int no = Integer.parseInt(mNo);
+						int result = memberDao.MemberDataDelete(no);
+//						res.sendRedirect("./list");
+						if (result == 0) {
+							System.out.println("회원 삭제를 실패하였습니다.");
+						}
+					}else if (aNo != null) {
+						int abNo = Integer.parseInt(aNo);
+						int admin = memberDao.adminDataDelete(abNo);
+						if (admin == 0) {
+							System.out.println("관리자 삭제를 실패하였습니다.");
+						}
 
+				} 
+					res.sendRedirect("./list");
 
+			}
+		}
 
-
-			res.sendRedirect("./list");
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
+	

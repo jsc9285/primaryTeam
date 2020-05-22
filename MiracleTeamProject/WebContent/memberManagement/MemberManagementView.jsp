@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>회원 관리</title>
 <style type="text/css">
+	div {
+		width: 1000px;
+		margin: auto;
+	}
 	table, tr, th, td{
 		border: 1px solid black;
 		border-collapse: collapse;
@@ -25,55 +29,7 @@
 
 <body>
 	<jsp:include page="../common/Header.jsp"/>
-
-	<h1>회원관리</h1>
-	
-	<c:if test="${member.email == 'admin'}">
-	
-	<h3>관리자 목록</h3>
-	<table>
-		<tr>
-			<th>
-				번호
-			</th>
-			<th>
-				이름
-			</th>
-			<th>
-				이메일
-			</th>
-			<th>
-				비밀번호
-			</th>
-			<th	colspan="2">
-				수정/삭제
-			</th>
-		</tr>
-			<c:forEach var='adminDto' items='${adminList}'>
-				<tr>
-					<td id='noStyle'>
-						${adminDto.no}
-					</td>
-					<td>
-						${adminDto.name}
-					</td>
-					<td>
-						${adminDto.email}
-					</td>
-					<td>
-						${adminDto.password}
-					</td>
-					<td>
-						<a href='./update?adNo=${adminDto.no}'>[수정]</a>
-					</td>
-					<td>
-						<a href='./delete?adNo=${adminDto.no}'>[삭제]</a>
-					</td>
-				</tr>
-			</c:forEach>
-	</table>
-	</c:if>
-	
+	<div>
 	
 	<h3>회원 목록</h3>
 	
@@ -109,20 +65,17 @@
 				<td>
 					${memberDto.password}
 				</td>
-				<c:if test="${member.no == memberDto.no || member.email == 'admin'}">
-					<td>
-						<a href='./update?mmNo=${memberDto.no}'>[수정]</a>
-					</td>
-					<td>
-						<a href='./delete?mmNo=${memberDto.no}'>[삭제]</a>
-					</td>
-				</c:if>
-				<c:if test="${member.no != memberDto.no && member.email != 'admin'}">
-					<td colspan="2"></td>
-				</c:if>
+				<td>
+					<a href='./update?mmNo=${memberDto.no}'>[수정]</a>
+				</td>
+				<td>
+					<a href='./delete?mmNo=${memberDto.no}&email=${member.email}'>[삭제]</a>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
+	<br>
 	<jsp:include page="../common/Bottom.jsp"/>
 
 </body>

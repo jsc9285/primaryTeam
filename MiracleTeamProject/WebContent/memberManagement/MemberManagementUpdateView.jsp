@@ -7,13 +7,25 @@
 
 <meta charset="UTF-8">
 <title>회원정보수정</title>
+<style type="text/css">
+	div {
+		width: 1000px;
+		margin: auto;
+	}
+
+</style>
 <script type="text/javascript">
 	function pageMoveListFnc(){
 		location.href = "./list";
 	}
 	
 	function pageMoveDeleteFnc(no){
-		var url = "./delete?no=" + no;
+		var url = "./delete?mmNo=" + no;
+		location.href = url;
+	}
+	
+	function pageMoveAdminDeleteFnc(no){
+		var url = "./delete?adNo=" + no;
 		location.href = url;
 	}
 </script>
@@ -21,6 +33,7 @@
 
 <body>
 	<jsp:include page="../common/Header.jsp"/>
+	<div>
 	<h1>회원정보</h1>
 	<c:if test="${adminDto != null}">
 		<form action='./update' method='post'>
@@ -29,7 +42,7 @@
 			이&nbsp;메&nbsp;&nbsp;일: <input type='text' name='email' value='${adminDto.email}' readonly><br>
 			비밀번호: <input type='text' name='password' value='${adminDto.password}'><br>
 			<input type='submit' value='저장'>
-			<input type='button' value='삭제' onclick='pageMoveDeleteFnc(${adminDto.no});'>
+			<input type='button' value='삭제' onclick='pageMoveAdminDeleteFnc(${adminDto.no});'>
 			<input type='button' value='취소' onClick='pageMoveListFnc();'>	
 		</form>
 	</c:if>
@@ -44,6 +57,8 @@
 			<input type='button' value='취소' onClick='pageMoveListFnc();'>	
 		</form>
 	</c:if>
+	</div>
+	<br>
 	<jsp:include page="../common/Bottom.jsp"/>
 
 </body>
