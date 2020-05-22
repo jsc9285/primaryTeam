@@ -71,53 +71,39 @@
 		
 		<%-- var id = "<%= memberDto.email %>" ;
 		var pwd = '${memberDto.password}'; --%>
-
-/* 		if (inputObj[0].value == id
-				&& inputObj[1].value == pwd) {
-		} else if (inputObj[0].value != id && inputObj[1].value != pwd) {
-				
-
-			for (var i = 0; i < 2; i++) {
-				inputObj[i].parentNode.style.borderBottom = '1px solid #fe453b';
-				inputObj[i].parentNode.children[0].style.color = '#fe453b';
-			}
-
-			wrongObj[0].innerHTML = "<img class=\"warning\" src=\"../img/warning.svg\">"
-					+ "OP.GG ID가 존재하지 않거나 비밀번호가 일치하지 않습니다. 다시 시도해주세요.";
-			return false;
-		} */
 	}
 
 
 </script>
 </head>
 <body>
-<jsp:include page="../common/Header.jsp" />
+	<jsp:include page="../common/Header.jsp" />
 	<div id="root">
 		<div class="member-card-layout">
 			<div class="member-card">
 				<div class="member-card-layout-inner">
 
 					<h1 class="member-card-layout__logo">
-						<img class="member-card-layout__logo-image"
-							src="../img/pika.gif" alt="로고">
+						<img class="member-card-layout__logo-image" src="../img/pika.gif"
+							alt="로고">
 					</h1>
 					<div class="info-div">
-					
 
-									<!--onsubmit="return nextStepFnc();"   -->
-						<form id="formFirst" action="./login" method="post" onsubmit="return nextStepFnc();">
+
+						<!--onsubmit="return nextStepFnc();"   -->
+						<form id="formFirst" action="./login" method="post"
+							onsubmit="return nextStepFnc();">
 
 							<div class="input-box">
 								<label class="member-input__label" for="email-input">이메일
 									주소</label> <input class="input-contents" type="text" id="email-input"
-									autocomplete="off" value="" name="email"/>
+									autocomplete="off" value="" name="email" />
 							</div>
 
 							<div class="input-box">
 								<label class="member-input__label" for="pwd-input">비밀번호</label>
 								<input class="input-contents" type="password" id="pwd-input"
-									autocomplete="off" value="" name="password"/>
+									autocomplete="off" value="" name="password" />
 							</div>
 
 							<!--오류메시지  -->
@@ -125,13 +111,13 @@
 
 							<input id="target" type="submit" class="login-button" value="로그인"
 								disabled>
-								<div class="checks">
-									<div class="login-check">
-										<input id="ex_chk" type="checkbox"> <label for="ex_chk"
-											class="login-check-box-label">심심하면 눌러보세요</label>
-									</div>
-									
+							<div class="checks">
+								<div class="login-check">
+									<input id="ex_chk" type="checkbox"> <label for="ex_chk"
+										class="login-check-box-label">심심하면 눌러보세요</label>
 								</div>
+
+							</div>
 							<div class="hello-text">
 								처음 방문이신가요?<span class="signUp-link"><a
 									class="member-link" href="../member/add">회원가입하기</a></span>

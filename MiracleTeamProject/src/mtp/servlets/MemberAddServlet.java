@@ -23,7 +23,6 @@ public class MemberAddServlet extends HttpServlet{
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		// 337 1번 문제 입력화면 생성 코드 제거	
 		res.sendRedirect("../member/MemberForm.jsp");
 	}
 	
