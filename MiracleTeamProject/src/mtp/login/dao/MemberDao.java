@@ -30,8 +30,7 @@ public class MemberDao {
 
 			rs = pstmt.executeQuery();
 
-			ArrayList<MemberDto> memberList = 
-				new ArrayList<MemberDto>();
+			ArrayList<MemberDto> memberList = new ArrayList<MemberDto>();
 			int no = 0;
 			String name = "";
 			String email = "";
@@ -41,8 +40,7 @@ public class MemberDao {
 				name = rs.getString("NAME");
 				email = rs.getString("EMAIL");
 
-				MemberDto memberDto = 
-					new MemberDto(no, name, email);
+				MemberDto memberDto = new MemberDto(no, name, email);
 
 				memberList.add(memberDto);
 			}
@@ -87,14 +85,12 @@ public class MemberDao {
 			String email = memberDto.getEmail();
 			String pwd = memberDto.getPassword();
 			String name = memberDto.getName();
-			
-			String sql = "INSERT INTO MEMBER_GUEST" 
-					+ " (NO, NAME, EMAIL, PWD)"
-					+ " VALUES(NO_GUEST_CHECK.NEXTVAL"
+
+			String sql = "INSERT INTO MEMBER_GUEST" + " (NO, NAME, EMAIL, PWD)" + " VALUES(NO_GUEST_CHECK.NEXTVAL"
 					+ " , ?, ?, ?)";
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
 			pstmt.setString(3, pwd);
@@ -102,7 +98,7 @@ public class MemberDao {
 			System.out.println(sql);
 
 			result = pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw e;
@@ -260,44 +256,44 @@ public class MemberDao {
 		return result;
 	}
 
-	//사용자 존재 유무 없으면 null 리턴
+	// 사용자 존재 유무 없으면 null 리턴
 	public MemberDto memberExist(String email, String pwd) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "";
-		
+
 		sql += "SELECT *";
 		sql += " FROM MEMBER_MANAGER";
 		sql += " WHERE EMAIL = ?";
 		sql += " AND PWD = ?";
-		
+
 		String name = "";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			int colIndex = 1;
-			
+
 			pstmt.setString(colIndex++, email);
 			pstmt.setString(colIndex, pwd);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			MemberDto memberDto = new MemberDto();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				email = rs.getString("email");
 				name = rs.getString("name");
-				
+
 				memberDto.setNo(rs.getInt("no"));
 				memberDto.setEmail(email);
 				memberDto.setName(name);
 				memberDto.setPassword(rs.getString("pwd"));
-				
+
 				// 회원 정보 조회 확인
 				return memberDto;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -322,55 +318,55 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 		// 회원이 조회가 안된 경우
 		return null;
 	}
-	
-	//사용자 존재 유무 없으면 null 리턴
+
+	// 사용자 존재 유무 없으면 null 리턴
 	public MemberDto guestExist(String email, String pwd) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "";
-		
+
 		sql += "SELECT *";
 		sql += " FROM MEMBER_GUEST";
 		sql += " WHERE EMAIL = ?";
 		sql += " AND PWD = ?";
-		
+
 		String name = "";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			int colIndex = 1;
-			
+
 			pstmt.setString(colIndex++, email);
 			pstmt.setString(colIndex, pwd);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			MemberDto memberDto = new MemberDto();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				email = rs.getString("email");
 				name = rs.getString("name");
-				
+
 				memberDto.setNo(rs.getInt("no"));
 				memberDto.setEmail(email);
 				memberDto.setName(name);
 				memberDto.setPassword(rs.getString("pwd"));
-				
+
 				// 회원 정보 조회 확인
 				return memberDto;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		} finally {
-			
+
 			try {
 				if (rs != null) {
 					rs.close();
@@ -379,7 +375,7 @@ public class MemberDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			try {
 				if (pstmt != null) {
 					pstmt.close();
@@ -389,8 +385,10 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 		// 회원이 조회가 안된 경우
 		return null;
 	}
+
 }
+

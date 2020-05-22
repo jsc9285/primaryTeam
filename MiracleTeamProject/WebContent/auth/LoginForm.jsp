@@ -5,100 +5,10 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.2" />
+<script type="text/javascript" src="../js/login.js?ver=1.3"></script>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
 
-<script type="text/javascript">
-	window.onload = function() {		
-		var inputObj = document.getElementsByTagName('input');
-		var placeObj = document.getElementsByClassName('member-input__label');
-		var clickObj = document.getElementById("ex_chk");
-
-		for (var i = 0; i < 2; i++) {
-			inputObj[i].addEventListener('focus', placeFlyFnc)
-			inputObj[i].addEventListener('blur', placeDownFnc)
-			inputObj[i].addEventListener('keyup', submitFnc)
-		}
-		setInterval(metaFnc,4000);
-// 		clickObj.addEventListener('click', metaFnc)
-		
-	}
-    
-	function metaFnc() {
-        var imgArray= new Array(8);
-/*         imgArray[0]="../img/pika.gif";  //사진
-        imgArray[1]="../img/pika1.gif"; //사진
-        imgArray[2]="../img/pika2.gif"; //사진
-        imgArray[3]="../img/pika3.gif"; //사진 */
-        
-        for (var i = 0; i < imgArray.length; i++) {
-        	imgArray[i]="../img/pika"+i+".gif";
-
-		} 
-        
-        var imgNum=Math.round(Math.random()*7);
-        var objImg=document.getElementById("mainImg");
-        objImg.src=imgArray[imgNum];
-        
-/* 		var img = document.getElementById('mainImg');
-		img.setAttribute('src', '../img/pika2.gif') */
-		
-		
-	}
-	function placeFlyFnc() {
-		this.parentNode.style.borderBottom = '1px solid #1ea1f7';
-		this.parentNode.children[0].style.transform = 'scale(.75) translateY(-39px)';
-		this.parentNode.children[0].style.color = '#1ea1f7';
-	}
-
-	function placeDownFnc() {
-
-		if (this.value.length == 0) {
-			this.parentNode.style.borderBottom = '1px solid #dddfe4';
-			this.parentNode.children[0].style.color = '#7b858e';
-			this.parentNode.children[0].style.transform = '';
-
-		} else if (this.value.length > 0) {
-			this.parentNode.style.borderBottom = '1px solid #dddfe4';
-			this.parentNode.children[0].style.color = '#7b858e';
-			this.parentNode.children[0].style.transform = 'scale(.75) translateY(-39px)';
-		}
-	}
-
-	function submitFnc() {
-		var submitBnt = document.getElementById('target');
-		var inputObj = document.getElementsByTagName('input');
-		var wrongObj = document
-				.getElementsByClassName('member-input-wrong-message');
-		var sizeUp = document.getElementsByClassName('member-card');
-
-		if (inputObj[0].value.length > 0 && inputObj[1].value.length > 0) {
-			submitBnt.style.backgroundColor = '#1ea1f7';
-			submitBnt.style.cursor = 'pointer';
-			submitBnt.disabled = false;
-		} else if (inputObj[0].value.length == 0
-				|| inputObj[1].value.length == 0) {
-			/* sizeUp[0].style.height = "726px"; */
-			submitBnt.style.backgroundColor = '#dddfe4';
-			wrongObj[0].innerHTML = "";
-			submitBnt.style.cursor = 'default';
-			submitBnt.disabled = true;
-		}
-	}
-
-	function nextStepFnc() {
-		var formObj = document.getElementById('formFirst');
-		var inputObj = document.getElementsByTagName('input');
-		var wrongObj = document
-				.getElementsByClassName('member-input-wrong-message');
-		var sizeUp = document.getElementsByClassName('member-card');
-		
-		<%-- var id = "<%= memberDto.email %>" ;
-		var pwd = '${memberDto.password}'; --%>
-	}
-
-
-</script>
 </head>
 <body>
 	<jsp:include page="../common/Header.jsp" />

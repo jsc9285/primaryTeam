@@ -4,7 +4,7 @@
 
 window.onload = function() {
 
-	var inputObj = document.getElementsByTagName('input');
+	var inputObj = document.getElementsByClassName('input-contents');
 	var placeObj = document.getElementsByClassName('member-input__label');
 
 	for (var i = 0; i < 4; i++) {
@@ -13,26 +13,36 @@ window.onload = function() {
 		inputObj[i].addEventListener('keyup', submitFnc)
 		inputObj[i].addEventListener('keyup', checkMailFnc)
 	}
-	
-	inputObj[3].addEventListener('keyup', equalPwd)
+	setInterval(metaFnc, 4000);
+}
+
+function metaFnc() {
+	var imgArray = new Array(8);
+
+	for (var i = 0; i < imgArray.length; i++) {
+		imgArray[i] = "../img/pika" + i + ".gif";
+	}
+	var imgNum = Math.round(Math.random() * 7);
+	var objImg = document.getElementById("mainImg");
+	objImg.src = imgArray[imgNum];
 }
 
 function equalPwd() {
-	var inputObj = document.getElementsByTagName('input');
+	var inputObj = document.getElementsByClassName('input-contents');
 	var wrongObj = document
-	.getElementsByClassName('member-input-wrong-message');
+			.getElementsByClassName('member-input-wrong-message');
 	var sizeUp = document.getElementsByClassName('member-card');
-	
+
 	if (this.value == inputObj[2].value || this.value.length == 0) {
 		sizeUp[0].style.height = "620px";
 		wrongObj[0].innerHTML = "";
-	} 
-	
-	if(this.value.length >= 4 && this.value != inputObj[2].value) {		
+	}
+
+	if (this.value.length >= 4 && this.value != inputObj[2].value) {
 		this.focus();
 		sizeUp[0].style.height = "620px";
 		wrongObj[0].innerHTML = "<img class=\"warning\" src=\"../img/warning.svg\">"
-			+ "비밀번호와 일치하지 않습니다.";
+				+ "비밀번호와 일치하지 않습니다.";
 	}
 }
 
@@ -40,7 +50,7 @@ function checkMailFnc() {
 	var wrongObj = document
 			.getElementsByClassName('member-input-wrong-message');
 	var sizeUp = document.getElementsByClassName('member-card');
-	
+
 	if (this.value.length == 0) {
 		sizeUp[0].style.height = "620px";
 		wrongObj[0].innerHTML = "";
@@ -69,10 +79,11 @@ function placeDownFnc() {
 
 function submitFnc() {
 	var submitBnt = document.getElementById('target');
-	var inputObj = document.getElementsByTagName('input');
+	var inputObj = document.getElementsByClassName('input-contents');
 
 	if (inputObj[0].value.length > 0 && inputObj[1].value.length > 0
-			&& inputObj[2].value.length > 0 && inputObj[3].value.length > 0 && inputObj[2].value == inputObj[3].value) {
+			&& inputObj[2].value.length > 0 && inputObj[3].value.length > 0
+			&& inputObj[2].value == inputObj[3].value) {
 		submitBnt.style.backgroundColor = '#1ea1f7';
 		submitBnt.style.cursor = 'pointer';
 		submitBnt.disabled = false;
@@ -90,7 +101,7 @@ function validate() {
 	var pw = document.getElementById("pwd-input");
 	var email = document.getElementById("email-input");
 	var name = document.getElementById("name-input");
-	
+
 	var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
 	var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
@@ -108,7 +119,7 @@ function validate() {
 function check(re, what, message) {
 
 	var formObj = document.getElementById('formFirst');
-	var inputObj = document.getElementsByTagName('input');
+	var inputObj = document.getElementsByClassName('input-contents');
 	var wrongObj = document
 			.getElementsByClassName('member-input-wrong-message');
 	var sizeUp = document.getElementsByClassName('member-card');
@@ -116,15 +127,30 @@ function check(re, what, message) {
 	if (re.test(what.value)) {
 		formObj.setAttribute('action', './add');
 		return true;
-				
-		}
 
-		// alert(message);
-		what.focus();
-		sizeUp[0].style.height = "620px";
-		wrongObj[0].innerHTML = "<img class=\"warning\" src=\"../img/warning.svg\">"
+	}
+
+	// alert(message);
+	what.focus();
+	sizeUp[0].style.height = "620px";
+	wrongObj[0].innerHTML = "<img class=\"warning\" src=\"../img/warning.svg\">"
 			+ message;
-		return false;		
+	return false;
 
 	// return false;}
+}
+
+// id 중복체크
+function emailCheck() {
+	var openWin;
+	window.name = '이메일 중복체크';
+	// 새창 만들기
+	openWin = window.open("emailCheckForm.jsp", "emailwin",
+			"width=400, height=350");
+
+	openWin.onload = function() {
+		openWin.document.getElementById('childInput').value = document
+				.getElementById('email-input').value;
+	}// emailCheck() end
+
 }

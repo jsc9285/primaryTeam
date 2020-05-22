@@ -6,7 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.3" />
-<script type="text/javascript" src="../js/member.js?ver=1.2"></script>
+<script type="text/javascript" src="../js/member.js?ver=1.4"></script>
 <title>회원 등록</title>
 
 </head>
@@ -22,7 +22,7 @@
 				<div class="member-card-layout-inner">
 
 					<h1 class="member-card-layout__logo">
-						<img class="member-card-layout__logo-image" src="../img/pika.gif"
+						<img id="mainImg" class="member-card-layout__logo-image" src="../img/pika0.gif"
 							alt="로고">
 					</h1>
 					<div class="info-div">
@@ -35,6 +35,9 @@
 								<label class="member-input__label" for="email-input">이메일
 									주소</label> <input class="input-contents" type="text" id="email-input"
 									autocomplete="off" value="" name="email" />
+								<input type="button" value="Email 중복확인" onclick="emailCheck()">
+								<input type="hidden" name="emailDuplication" value="emailUnChk">
+								
 							</div>
 
 							<div class="input-box">
@@ -60,14 +63,7 @@
 						<input id="target" type="submit" class="login-button" value="회원가입"
 							disabled>
 						</form>
-						
-							
-						<!-- 							<div class="checks">
-								<div class="login-check">
-									<input id="ex_chk" type="checkbox"> <label for="ex_chk"
-										class="login-check-box-label">심심하면 눌러보세요</label>
-								</div>
-							</div> -->
+
 						<div class="hello-text">
 							이미 회원이신가요?<span class="signUp-link"><a class="member-link"
 								href="../auth/login">돌아가기</a></span>
@@ -80,5 +76,6 @@
 
 	</div>
 	<jsp:include page="../common/Bottom.jsp" />
+
 </body>
 </html>
