@@ -21,13 +21,25 @@ button {
 #root {
 	position: relative;
 	background-color: #f3f5f7;
+	width: 1000px;
+	margin: auto;
 }
 
 .member-card-layout {
-	padding: 100px 0 84px;
+	padding: 100px 84px 100px 84px;
 }
 
+
 .member-card {
+	position: relative;
+	margin: 0 auto;
+	width: 450px;
+	height: 510px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+
+.member-card-join {
 	position: relative;
 	margin: 0 auto;
 	width: 450px;
@@ -140,7 +152,7 @@ button {
 .member-input-wrong-message {
 	font-weight: 400;
 	font-size: 14px;
-	margin-top: 8px;
+	margin-top: 15px;
 	position: relative;
 	padding-left: 24px;
 	color: #fe453b;
@@ -220,7 +232,7 @@ button {
 	color: #fff;
 	border: 0;
 	height: 56px;
-	margin-top: 40px;
+	margin-top: 20px;
 	width: 100%;
 	font-weight: 700;
 	text-align: center;

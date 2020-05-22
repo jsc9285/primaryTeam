@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.1" />
+<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.2" />
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
 
@@ -12,6 +12,7 @@
 	window.onload = function() {		
 		var inputObj = document.getElementsByTagName('input');
 		var placeObj = document.getElementsByClassName('member-input__label');
+		var clickObj = document.getElementById("ex_chk");
 
 		for (var i = 0; i < 2; i++) {
 			inputObj[i].addEventListener('focus', placeFlyFnc)

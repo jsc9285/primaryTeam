@@ -15,10 +15,10 @@
 	<!-- 337 1번 문제 MemberAddServlet 화면출력 위임 -->
 	<jsp:include page="../common/Header.jsp" />
 
-	<h1>회원등록</h1>
 	<div id="root">
 		<div class="member-card-layout">
-			<div class="member-card">
+		
+			<div class="member-card-join">
 				<div class="member-card-layout-inner">
 
 					<h1 class="member-card-layout__logo">
@@ -54,13 +54,13 @@
 								확인</label> <input class="input-contents" type="password"
 								id="pwdChk-input" autocomplete="off" value="" name="passwordChk" />
 						</div>
+						<!--오류메시지  -->
+							<div class="member-input-wrong-message"></div>
 
 						<input id="target" type="submit" class="login-button" value="회원가입"
 							disabled>
 						</form>
 						
-						<!--오류메시지  -->
-							<div class="member-input-wrong-message"></div>
 							
 						<!-- 							<div class="checks">
 								<div class="login-check">
