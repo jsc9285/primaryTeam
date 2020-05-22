@@ -7,25 +7,32 @@
 <meta charset="UTF-8">
 
 <title>시작 화면</title>
-
 <script type="text/javascript">
 	function PageMoveFnc(address) {
 		location.href = '<%=request.getContextPath()%>' + address;
+	}
+
+	function changeImgFnc() {
+		var mainImg = document.getElementById("mainImg");
+		mainImg.setAttribute("src", "./img/poke2.gif");
+	}
+	
+	function reChangeImgFnc() {
+		var mainImg = document.getElementById("mainImg");
+		mainImg.setAttribute("src", "./img/poke1.gif");
 	}
 </script>
 </head>
 
 <body>
-
 	<jsp:include page="/common/Header.jsp" />
 
 	<div style="width: 1000px; margin: auto; background-color: #f3f5f7; text-align: center;">
-		<p onclick="PageMoveFnc('/auth/login');">
-			<img style="width: 1000px; height: 600px;" src="./img/pika.gif" alt="MainImg">
+		<p onclick="PageMoveFnc('/auth/login');" style="margin: 0px;">
+			<img id='mainImg' style="display: block; width: 1000px; height: 600px;" onmouseenter="changeImgFnc();" onmouseleave="reChangeImgFnc();" src="./img/poke1.gif" alt="MainImg">
 		</p>		
 	</div>
 	
 	<jsp:include page="/common/Bottom.jsp" />
-	
 </body>
 </html>

@@ -36,6 +36,12 @@
 	text-decoration: none; 
 	background-color: #CD5C5C; 	
 }
+
+.pageBtn:hover{
+	background-color: #fff;
+	border: 1px solid #CD5C5C;
+	color: #CD5C5C;
+}
 </style>
 
 </head>
@@ -47,7 +53,7 @@
 	<div id="wrap">
 		<br>
 		<div id="topForm">
-			<input type="button" value="글쓰기" onclick="location.href = './post?no=${memberDto.no}'">
+			<input type="button" value="글쓰기" onclick="location.href = './post?no=${member.no}'">
 		</div>
 		<br>
 		<div id="board">

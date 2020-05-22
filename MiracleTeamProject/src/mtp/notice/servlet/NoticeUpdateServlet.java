@@ -29,10 +29,7 @@ public class NoticeUpdateServlet extends HttpServlet{
 			ServletContext sc = this.getServletContext();
 			conn = (Connection) sc.getAttribute("conn");
 			
-			// DB 연결( 회원정보(MemberDto), 게시물정보(NoticeDto) )
-//			MemberDao memberDao = new MemberDao();
-//			memberDao.setConnection(conn);
-			
+			// DB 연결( 게시물정보(NoticeDto) )		
 			NoticeDao noticeDao = new NoticeDao();
 			noticeDao.setConnection(conn);
 			

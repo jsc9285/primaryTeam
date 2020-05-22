@@ -39,43 +39,55 @@ public class NoticeDao {
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, start+9);
 		}else if(opt.equals("0")) {
-			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
-			sql += " FROM NOTICE_POST";
+			sql = "SELECT *";
+			sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM NOTICE_POST)";
 			sql += " WHERE TITLE LIKE ?";
+			sql += " AND rnum>=? and rnum<=?";			
 			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, "%" + condition + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, start+9);
 		}else if(opt.equals("1")) {
-			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
-			sql += " FROM NOTICE_POST";
+			sql = "SELECT *";
+			sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM NOTICE_POST)";
 			sql += " WHERE CONTEXT LIKE ?";
+			sql += " AND rnum>=? and rnum<=?";			
 			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, "%" + condition + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, start+9);
 		}else if(opt.equals("2")) {
-			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
-			sql += " FROM NOTICE_POST";
-			sql += " WHERE TITLE LIKE ?";
-			sql += " OR CONTEXT LIKE ?";
+			sql = "SELECT *";
+			sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM NOTICE_POST)";
+			sql += " WHERE (TITLE LIKE ?";
+			sql += " OR CONTEXT LIKE ?)";
+			sql += " AND rnum>=? and rnum<=?";			
 			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, "%" + condition + "%");
 			pstmt.setString(2, "%" + condition + "%");
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, start+9);
 		}else if(opt.equals("3")) {
-			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
-			sql += " FROM NOTICE_POST";
+			sql = "SELECT *";
+			sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM NOTICE_POST)";
 			sql += " WHERE WRITER LIKE ?";
+			sql += " AND rnum>=? and rnum<=?";			
 			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, "%" + condition + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, start+9);
 		}
 		
 		

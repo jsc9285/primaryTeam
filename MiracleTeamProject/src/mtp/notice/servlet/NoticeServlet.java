@@ -33,15 +33,8 @@ public class NoticeServlet extends HttpServlet{
 			ServletContext sc = this.getServletContext();
 			conn = (Connection) sc.getAttribute("conn");
 			
-			// DB 연결( 회원정보(MemberDto), 게시물정보(NoticeDto) )
-			MemberDao memberDao = new MemberDao();
-			memberDao.setConnection(conn);
-			
-			MemberDto memberDto = new MemberDto();	
-			memberDto = memberDao.memberSelectOne(1);
-			
-			req.setAttribute("memberDto", memberDto);
-			// 아래는 게시판
+			// DB 연결( 게시물정보(NoticeDto) )
+
 			NoticeDao noticeDao = new NoticeDao();
 			noticeDao.setConnection(conn);
 			
