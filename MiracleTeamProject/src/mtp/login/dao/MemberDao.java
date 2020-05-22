@@ -21,7 +21,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT NO, NAME, EMAIL";
+		String sql = "SELECT *";
 		sql += " FROM MEMBER_GUEST";
 		sql += " ORDER BY NO ASC";
 
@@ -168,7 +168,7 @@ public class MemberDao {
 
 		String sql = "";
 
-		sql = "SELECT NO, EMAIL, NAME";
+		sql = "SELECT *";
 		sql += " FROM MEMBER_GUEST";
 		sql += " WHERE NO =?";
 
@@ -267,7 +267,7 @@ public class MemberDao {
 		
 		String sql = "";
 		
-		sql += "SELECT NAME, EMAIL";
+		sql += "SELECT *";
 		sql += " FROM MEMBER_MANAGER";
 		sql += " WHERE EMAIL = ?";
 		sql += " AND PWD = ?";
@@ -289,8 +289,10 @@ public class MemberDao {
 				email = rs.getString("email");
 				name = rs.getString("name");
 				
+				memberDto.setNo(rs.getInt("no"));
 				memberDto.setEmail(email);
 				memberDto.setName(name);
+				memberDto.setPassword(rs.getString("pwd"));
 				
 				// 회원 정보 조회 확인
 				return memberDto;
@@ -332,7 +334,7 @@ public class MemberDao {
 		
 		String sql = "";
 		
-		sql += "SELECT NAME, EMAIL";
+		sql += "SELECT *";
 		sql += " FROM MEMBER_GUEST";
 		sql += " WHERE EMAIL = ?";
 		sql += " AND PWD = ?";

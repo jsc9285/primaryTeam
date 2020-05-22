@@ -19,9 +19,32 @@
 			inputObj[i].addEventListener('blur', placeDownFnc)
 			inputObj[i].addEventListener('keyup', submitFnc)
 		}
+		setInterval(metaFnc,4000);
+// 		clickObj.addEventListener('click', metaFnc)
 		
 	}
+    
+	function metaFnc() {
+        var imgArray= new Array(8);
+/*         imgArray[0]="../img/pika.gif";  //사진
+        imgArray[1]="../img/pika1.gif"; //사진
+        imgArray[2]="../img/pika2.gif"; //사진
+        imgArray[3]="../img/pika3.gif"; //사진 */
+        
+        for (var i = 0; i < imgArray.length; i++) {
+        	imgArray[i]="../img/pika"+i+".gif";
 
+		} 
+        
+        var imgNum=Math.round(Math.random()*7);
+        var objImg=document.getElementById("mainImg");
+        objImg.src=imgArray[imgNum];
+        
+/* 		var img = document.getElementById('mainImg');
+		img.setAttribute('src', '../img/pika2.gif') */
+		
+		
+	}
 	function placeFlyFnc() {
 		this.parentNode.style.borderBottom = '1px solid #1ea1f7';
 		this.parentNode.children[0].style.transform = 'scale(.75) translateY(-39px)';
@@ -84,10 +107,10 @@
 			<div class="member-card">
 				<div class="member-card-layout-inner">
 
-					<h1 class="member-card-layout__logo">
-						<img class="member-card-layout__logo-image" src="../img/pika.gif"
+					<div class="member-card-layout__logo">
+						<img id="mainImg" class="member-card-layout__logo-image" src="../img/pika4.gif"
 							alt="로고">
-					</h1>
+					</div>
 					<div class="info-div">
 
 

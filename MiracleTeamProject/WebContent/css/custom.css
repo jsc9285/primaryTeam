@@ -34,7 +34,7 @@ button {
 	position: relative;
 	margin: 0 auto;
 	width: 450px;
-	height: 510px;
+	height: 530px;
 	background-color: #fff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
@@ -56,11 +56,11 @@ button {
 .member-card-layout__logo {
 	padding-top: 48px;
 	text-align: center;
-	margin-bottom: 42px;
 }
 
 .member-card-layout__logo-image {
 	width: 160px;
+	height: 140px;
 }
 
 .info-div {

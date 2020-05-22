@@ -3,18 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Refresh" content="1;url=./login">
-
+<meta http-equiv="Refresh" content="3;url=./login">
 <title>회원가입 성공</title>
 <script type="text/javascript">
-window.onload = function() {
-	alert("회원가입을 축하드립니다.!\n잠시 후에 다시 로그인 화면으로 갑니다.");
 	
-}
 </script>
 </head>
 
 <body>
+	<div style="text-align: center;">
+		<h1 style="color: #DAA520;">회원가입을 축하드립니다 >___________<</h1>
+		<h1 style="color: #DAA520;">3초후 로그인 페이지로 이동됩니다</h1>
+	</div>
 
+	<div
+		style="width: 1000px; margin: auto; background-color: #f3f5f7; text-align: center;">
+		<p onclick="PageMoveFnc('/auth/login');">
+			<img style="width: 1000px; height: 600px;" src="../img/pika.gif"
+				alt="MainImg">
+		</p>
+	</div>
+
+	<jsp:include page="/common/Bottom.jsp" />
 </body>
 </html>
