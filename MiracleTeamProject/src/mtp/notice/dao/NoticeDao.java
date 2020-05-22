@@ -32,7 +32,7 @@ public class NoticeDao {
 			sql = "SELECT *";
 			sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM NOTICE_POST)";
 			sql += " WHERE rnum>=? and rnum<=?";			
-			sql += " ORDER BY NO ASC";
+			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -42,7 +42,7 @@ public class NoticeDao {
 			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
 			sql += " FROM NOTICE_POST";
 			sql += " WHERE TITLE LIKE ?";
-			sql += " ORDER BY NO ASC";
+			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
@@ -51,7 +51,7 @@ public class NoticeDao {
 			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
 			sql += " FROM NOTICE_POST";
 			sql += " WHERE CONTEXT LIKE ?";
-			sql += " ORDER BY NO ASC";
+			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
@@ -61,7 +61,7 @@ public class NoticeDao {
 			sql += " FROM NOTICE_POST";
 			sql += " WHERE TITLE LIKE ?";
 			sql += " OR CONTEXT LIKE ?";
-			sql += " ORDER BY NO ASC";
+			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
@@ -71,7 +71,7 @@ public class NoticeDao {
 			sql = "SELECT NO, TITLE, WRITER, CONTEXT";
 			sql += " FROM NOTICE_POST";
 			sql += " WHERE WRITER LIKE ?";
-			sql += " ORDER BY NO ASC";
+			sql += " ORDER BY NO DESC";
 			
 			pstmt = conn.prepareStatement(sql);
 
