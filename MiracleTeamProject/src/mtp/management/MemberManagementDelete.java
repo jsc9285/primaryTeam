@@ -9,9 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import mtp.dao.MemberDao;
-import mtp.dto.MemberDto;
+import mtp.login.dto.MemberDto;
 
 @WebServlet(value = "/memberManagement/delete")
 public class MemberManagementDelete extends HttpServlet {
@@ -23,11 +24,13 @@ public class MemberManagementDelete extends HttpServlet {
 
 		String mNo = "";
 		String aNo = "";
-		
+		String email = "";
+		String adminTest = "admin";
 
 		try {
 			mNo = req.getParameter("mmNo");
 			aNo = req.getParameter("adNo");
+			email = req.getParameter("email");
 			
 			ServletContext sc = this.getServletContext();
 
@@ -36,23 +39,23 @@ public class MemberManagementDelete extends HttpServlet {
 			MemberDao memberDao = new MemberDao();
 			memberDao.setConnection(conn);
 			
-//			 회원일때 실행
-//			MemberDto memberDto = new MemberDto();
+			HttpSession session = req.getSession();
+			MemberDto member = (MemberDto) session.getAttribute("member");
 			
-//			String email = memberDto.getEmail();
-			String email = req.getParameter("email");
+//			 회원일때 실행
 			System.out.println(email);
-			if (email != "admin") {
+			if (!adminTest.equals(member.getEmail())) {
 				if (mNo != null) {
 					int no = Integer.parseInt(mNo);
 					int result = memberDao.MemberDataDelete(no);
 					if (result == 0) {
 						System.out.println("회원 삭제를 실패하였습니다.");
 					}
-				res.sendRedirect(req.getContextPath() + "/auth/logout");
+					res.sendRedirect(req.getContextPath() + "/auth/logout");
+				}
 			}
 //			 관리자일때 실행
-			if (email == "admin") {
+			if (adminTest.equals(member.getEmail())) {
 					if (mNo != null) {
 						int no = Integer.parseInt(mNo);
 						int result = memberDao.MemberDataDelete(no);
@@ -69,9 +72,7 @@ public class MemberManagementDelete extends HttpServlet {
 
 				} 
 					res.sendRedirect("./list");
-
 			}
-		}
 
 		} catch (Exception e) {
 			e.printStackTrace();

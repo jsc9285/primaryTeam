@@ -16,7 +16,7 @@
 </style>
 <script type="text/javascript">
 	function pageMoveListFnc(){
-		location.href = "./list";
+		location.href = "../noticeBoard/list";
 	}
 	
 	function pageMoveDeleteFnc(no){

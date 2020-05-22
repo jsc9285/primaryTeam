@@ -69,7 +69,7 @@
 					<a href='./update?mmNo=${memberDto.no}'>[수정]</a>
 				</td>
 				<td>
-					<a href='./delete?mmNo=${memberDto.no}&email=${member.email}'>[삭제]</a>
+					<a href='./delete?mmNo=${memberDto.no}&email=${memberDto.email}'>[삭제]</a>
 				</td>
 			</tr>
 		</c:forEach>
