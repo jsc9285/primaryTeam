@@ -158,6 +158,30 @@ button {
 	color: #fe453b;
 }
 
+.email-wrong-message {
+	font-weight: 400;
+	font-size: 14px;
+	margin-top: 15px;
+	color: #fe453b;
+}
+
+.wrong-img {
+	padding-top: 2px;
+	float: left;
+	margin-right: 3px;
+}
+
+.warning {
+	position: absolute;
+	left: 0;
+	top: 2px;
+	content: "";
+	display: block;
+	width: 16px;
+	height: 16px;
+	background-size: 16px 16px;
+}
+
 .member-input__label {
 	color: #7b858e;
 	position: absolute;
@@ -299,13 +323,3 @@ button {
 	text-shadow: aqua;
 }
 
-.warning {
-	position: absolute;
-	left: 0;
-	top: 2px;
-	content: "";
-	display: block;
-	width: 16px;
-	height: 16px;
-	background-size: 16px 16px;
-}

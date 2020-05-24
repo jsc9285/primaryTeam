@@ -8,11 +8,14 @@
 </head>
 <body>
 	<div style="text-align: center">
-		<h3>* 이메일중복확인 *</h3>
+		<h3>* 아이디 중복확인 *</h3>
 		<form method="post" action="emailCheckPro.jsp">
-			이메일 : <input id="childInput" type="text" name="email" maxlength="20" autofocus>
+			이메일 : <input type="text" name="email" maxlength="10" autofocus>
 			<input type="submit" value="중복확인">
 		</form>
 	</div>
+
 </body>
 </html>
+
+
