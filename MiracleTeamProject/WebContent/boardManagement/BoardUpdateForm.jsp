@@ -45,7 +45,7 @@
 
 	<div id='mainWrap'>
 		<br>
-	    <b><font size="6" color="gray">글수정</font></b>
+	    <b style="margin-left: 25px;"><font size="6" color="gray">글수정</font></b>
 	    <br>
 	    
 	    <form method="post" action="./update">

@@ -64,7 +64,7 @@
 <jsp:include page="../common/Header.jsp"/>
 <div style="width: 1000px; height: 600px; margin: auto;">
 	<br>
-		<b><font size="6" color="gray">게시판</font></b>
+		<b style="margin-left: 25px;"><font size="6" color="gray">게시판</font></b>
 	<br> 
 	<div id="wrap">
 	<c:if test="${member ne null}">

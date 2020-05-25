@@ -3,10 +3,23 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style type="text/css">
+.titleMenu{
+	color: #EEE8AA;
+	cursor: pointer;
+	transition: all 0.2s;	
+}
 .titleMenu:hover{
-		background-color: #fff;
-		border: 1px solid #ffffff;
-		color: #B22222;
+	background-color: #fff;
+	border: 1px solid #ffffff;
+	border-radius: 5px;
+	color: #B22222;
+}
+#headerH1{
+	background: linear-gradient( to top, white, red );
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	cursor: pointer;
+ 	font-family: Comic Sans MS, Comic Sans, cursive;
 }
 </style>
 <script type="text/javascript">
@@ -14,11 +27,15 @@
 		location.href='<%=request.getContextPath()%>'+address;
 	}
 </script>
-<div style="text-align: center;">
-	<h1 style="color: #DAA520; cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>'">Miracle Team Project</h1>
+
+<div style="width: 1000px; margin:auto; text-align: center;">
+	<img style="width: 50px; height: 50px; position: absolute; left: 50%; margin-left: -240px;" alt="logoBall" src="<%=request.getContextPath()%>/img/monsterball1.png">
+	<img style="width: 50px; height: 50px; position: absolute; right: 50%; margin-right: -240px;" alt="logoBall" src="<%=request.getContextPath()%>/img/monsterball1.png">
+	<h1 id='headerH1' onclick="location.href='<%=request.getContextPath()%>'">Miracle Team Project</h1>	
 </div>
 
-<div style="background-color: #B22222; color: #FAFAD2; margin:auto; width: 1000px; padding: 15px; box-sizing: border-box;">
+<div style="background-color: #B22222; color: #FAFAD2; margin:auto; width: 1000px; padding: 15px; box-sizing: border-box;
+			border-top-right-radius: 30px; border-top-left-radius: 30px;">
 	<a class='titleMenu' onclick="PageMoveFnc('/noticeBoard/list');">공지사항</a>
 	<a class='titleMenu' onclick="PageMoveFnc('/boardManagement/list');">게시판</a>
 	<c:if test="${sessionScope.member.email eq 'admin'}">

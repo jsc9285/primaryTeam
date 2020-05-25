@@ -67,7 +67,7 @@ tr, td {
 	
 	<div id='mainWrap'>
 		<br>
-			<b><font size="6" color="gray">공지 게시판</font></b>
+			<b style="margin-left: 25px;"><font size="6" color="gray">공지 게시판</font></b>
 		<br>
 
 		<div id="wrap">

@@ -35,7 +35,7 @@ tr, td {
 		
 	<div id='mainWrap'>
 		<br>
-			<b><font size="6" color="gray">게시글 작성</font></b>
+			<b style="margin-left: 25px;"><font size="6" color="gray">게시글 작성</font></b>
 		<br>
 
 		<form action="./post" method="post">
@@ -49,7 +49,7 @@ tr, td {
 				<tr>
 					<td class="subTitle">제 목</td>
 					<td>
-						<input type="text" name="title" size="70" maxlength="50"/>
+						<input type="text" name="title" size="70" maxlength="15"/>
 					</td>
 				</tr>
 				<tr>

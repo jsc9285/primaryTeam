@@ -44,7 +44,7 @@
 <jsp:include page="../common/Header.jsp"/>
 	<div id='mainWrap'>
 	<br>
-    <b><font size="6" color="gray">글작성</font></b>
+    <b style="margin-left: 25px;"><font size="6" color="gray">글작성</font></b>
     <br>
 	    
 	    <form method="post" action="./write">
