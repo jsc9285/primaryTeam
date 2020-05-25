@@ -148,6 +148,8 @@ public class MemberManagementUpdate extends HttpServlet{
 					memberDao.setConnection(conn);
 					int result = memberDao.memberManagementUpdate(memberDto);
 					
+					session.setAttribute("member", memberDto);
+					
 					if(result == 0){
 						System.out.println("회원 정보 조회가 실패하였습니다.");
 					}

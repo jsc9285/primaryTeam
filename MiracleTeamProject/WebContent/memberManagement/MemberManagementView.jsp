@@ -14,11 +14,14 @@
 	}
 	table, tr, th, td{
 		border: 1px solid black;
-		border-collapse: collapse;
 	}
 	
 	th {
-		background-color: yellowgreen;
+		background-color: #F5A9BC;
+	}
+	
+	h3 {
+		color: grey;
 	}
 	
 	#noStyle {

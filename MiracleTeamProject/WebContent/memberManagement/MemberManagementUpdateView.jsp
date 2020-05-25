@@ -12,6 +12,10 @@
 		width: 1000px;
 		margin: auto;
 	}
+	
+	h1 {
+		color: grey;
+	}
 
 </style>
 <script type="text/javascript">
