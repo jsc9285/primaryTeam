@@ -34,12 +34,14 @@ public class NoticeSelectServlet extends HttpServlet{
 			noticeDao.setConnection(conn);
 			
 			int no = Integer.parseInt(req.getParameter("no"));
+			String page = req.getParameter("page");
 			
 			// no를 활용하여 업데이트 선택된 정보가 출력되게 !
 			NoticeDto noticeDto = new NoticeDto();
 			
 			noticeDto = noticeDao.noticeSelectOne(no);
 			
+	        req.setAttribute("page", page);
 			req.setAttribute("noticeDto", noticeDto);
 
 			// 공지사항게시판폼으로 이동

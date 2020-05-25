@@ -49,66 +49,70 @@
 <body>
 
 	<jsp:include page="/common/Header.jsp" />
-
-	<div id="wrap">
+	<div style="width: 1000px; margin: auto;">
 		<br>
-		<div id="topForm">
-			<input type="button" value="글쓰기" onclick="location.href = './post?no=${member.no}'">
-		</div>
+			<b><font size="6" color="gray">공지 게시판</font></b>
 		<br>
-		<div id="board">
-			<table id="bList" width="800" border="3" bordercolor="lightgray">
-				<tr heigh="30">
-					<td style="width: 100px;">글번호</td>
-					<td style="width: 550px;">제목</td>
-					<td style="width: 150px;">작성자</td>
-				</tr>
-				
-				<c:forEach var="notice" items="${noticeList}">
-					<tr>
-						<td>${notice.no}</td>
-						<td><a href='./select?no=${notice.no }'>${notice.title}</a></td>
-						<td>${notice.writer}</td>
-					</tr>
-				</c:forEach>
-
-			</table>
-		</div>
-		<br>
-		<div id="pageForm">
-			<c:if test="${startPage != 1}">
-				<a href='.list?page=${startPage-1}'>[ 이전 ]</a>			
-			</c:if>
-		
-			<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
-				<c:if test="${pageNum == spage}">
-					<a class='pageBtn'>${pageNum}&nbsp;</a>
-				</c:if>
-				<c:if test="${pageNum != spage}">
-					<a class='pageBtn' href="./list?page=${pageNum}">${pageNum}&nbsp;</a>
-				</c:if>
-			</c:forEach>
+		<div id="wrap">
 			
-			<c:if test="${endPage != maxPage}">
-				<a href='.list?page=${endPage+1}'>[ 다음 ]</a>			
-			</c:if>
+			<br>
+			<div id="topForm">
+				<input type="button" value="글쓰기" onclick="location.href = './post?no=${member.no}'">
+			</div>
+			<br>
+			<div id="board">
+				<table id="bList" width="800" border="3" bordercolor="lightgray">
+					<tr heigh="30">
+						<td style="width: 100px;">글번호</td>
+						<td style="width: 550px;">제목</td>
+						<td style="width: 150px;">작성자</td>
+					</tr>
+					
+					<c:forEach var="notice" items="${noticeList}">
+						<tr>
+							<td>${notice.no}</td>
+							<td><a href='./select?no=${notice.no}&page=${spage}'>${notice.title}</a></td>
+							<td>${notice.writer}</td>
+						</tr>
+					</c:forEach>
+	
+				</table>
+			</div>
+			<br>
+			<div id="pageForm">
+				<c:if test="${startPage != 1}">
+					<a href='.list?page=${startPage-1}'>[ 이전 ]</a>			
+				</c:if>
+			
+				<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
+					<c:if test="${pageNum == spage}">
+						<a class='pageBtn'>${pageNum}&nbsp;</a>
+					</c:if>
+					<c:if test="${pageNum != spage}">
+						<a class='pageBtn' href="./list?page=${pageNum}">${pageNum}&nbsp;</a>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${endPage != maxPage}">
+					<a href='.list?page=${endPage+1}'>[ 다음 ]</a>			
+				</c:if>
+			</div>
+			<br>
+			<div id="searchForm">
+				<form action="./list" method="get">
+					<select name="opt">
+						<option value="0">제목</option>
+						<option value="1">내용</option>
+						<option value="2">제목+내용</option>
+						<option value="3">작성자</option>
+					</select>
+						<input type="text" size="20" name="condition" />&nbsp;
+						<input type="submit" value="검색" />
+				</form>
+			</div>
 		</div>
 		<br>
-		<div id="searchForm">
-			<form action="./list" method="get">
-				<select name="opt">
-					<option value="0">제목</option>
-					<option value="1">내용</option>
-					<option value="2">제목+내용</option>
-					<option value="3">작성자</option>
-				</select>
-					<input type="text" size="20" name="condition" />&nbsp;
-					<input type="submit" value="검색" />
-			</form>
-		</div>
 	</div>
-	<br>
-	
 	<jsp:include page="/common/Bottom.jsp" />
 
 </body>

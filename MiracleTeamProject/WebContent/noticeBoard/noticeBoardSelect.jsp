@@ -57,7 +57,7 @@
 							<input type="submit" value="수정"> 
 							<input type="button" value="삭제" onclick="location.href = './delete?no=${noticeDto.no}'">
 						</c:if> 
-						<input type="button" value="목록" onclick="location.href = './list'">
+						<input type="button" value="목록" onclick="location.href = './list?page=${page}'">
 					</td>
 				</tr>
 			</table>
