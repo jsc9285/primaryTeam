@@ -17,29 +17,26 @@
 
 	<div id="root">
 		<div class="member-card-layout">
-<div class="email-wrong-message"></div>
+			<div class="email-wrong-message"></div>
 			<div class="member-card-join">
 				<div class="member-card-layout-inner">
 
 					<div class="member-card-layout__logo">
 						<img id="mainImg" class="member-card-layout__logo-image"
 							src="../img/pika0.gif" alt="로고">
-							<div id="wrongBox" >
-							
-							</div>
+						<div id="wrongBox"></div>
 					</div>
 					<div class="info-div">
 
-						<!-- <form name="join" onsubmit="return validate();" action='./add'
-		method="post"> -->
-						<!--onsubmit="return nextStepFnc();"   -->
-						<form id="formFirst" method="post" onsubmit="return validate();" name="userInfo">
+						<form id="formFirst" method="post" onsubmit="return validate();"
+							name="userInfo">
 							<div id="main-email" class="input-box">
 								<label class="member-input__label" for="email-input">이메일
 									주소</label> <input class="input-contents" type="text" id="email-input"
-									autocomplete="off" value="" name="email"/>
+									autocomplete="off" value="" name="email" />
 							</div>
-								<input id="eqEmail" type="button" value="중복확인" onclick="inputEmailChk()">
+							<input id="eqEmail" type="button" value="중복확인"
+								onclick="inputEmailChk()">
 
 							<div class="input-box">
 								<label class="member-input__label" for="name-input">이름 </label>
@@ -53,18 +50,16 @@
 								<input class="input-contents" type="password" id="pwd-input"
 									autocomplete="off" value="" name="password" />
 							</div>
-							
+
 							<div class="input-box">
 								<label class="member-input__label" for="pwdChk-input">비밀번호
 									확인</label> <input class="input-contents" type="password"
 									id="pwdChk-input" autocomplete="off" value=""
 									name="passwordChk" />
 							</div>
-							<!--오류메시지  -->
-							<div class="member-input-wrong-message"></div>
 
-							<input id="target" type="submit" class="login-button" value="회원가입"
-							disabled>
+							<input id="target" type="submit" class="login-button"
+								value="회원가입" disabled>
 						</form>
 
 						<div class="hello-text">
@@ -75,11 +70,6 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="member-card-war">
-			
-			</div>
-			
 		</div>
 
 	</div>

@@ -61,3 +61,12 @@ function submitFnc() {
 		submitBnt.disabled = true;
 	}
 }
+
+function findPwd(){
+    
+    window.name = "parentForm";
+    window.open("FindPwdForm.jsp",
+            "chkForm", "width=500, height=300, resizable = no, scrollbars = no");    
+}
+
+

@@ -19,53 +19,60 @@ button {
 	border: 0;
 }
 
-	#header {
-		height: 40px;
-		background-color: #232F46;
-	}
-	.headerImgL{ 
+#header {
+	height: 40px;
+	background-color: #232F46;
+}
+
+.headerImgL {
 	height: 40px;
 	float: left;
-	}
-	#yasuo{
-		height: 32px;
-		margin-bottom: 4px;
-		margin-top: 4px;
-		margin-left: 40px;
-	}
-	.headerImgR{ 
-		height: 40px;
-		float: right;
-	}
-	#loginBtn {
-		height: 28px;
-		width: 70px;
-		margin-bottom: 6px;
-		margin-top: 6px;
-		background-color: #5383E8;
-		margin-right: 20px;
-		border: 1px solid #5383E8;
-		border-radius: 6px;
-		color: white;
-	}
-	.selectBox {
-		height: 28px;
-		float: right;
-		margin-top: 6px;
-		margin-right: 18px;
-		margin-bottom: 6px;
-		background-color: #232F46;
-		color: white;
-		border: 1px solid #232F46;
-	}
-	#selectBox1{
-		width: 150px;
-		float: left;
-	}
-	#selectBox2{
-		width: 66px;
-		float: right;
-	}
+}
+
+#yasuo {
+	height: 32px;
+	margin-bottom: 4px;
+	margin-top: 4px;
+	margin-left: 40px;
+}
+
+.headerImgR {
+	height: 40px;
+	float: right;
+}
+
+#loginBtn {
+	height: 28px;
+	width: 70px;
+	margin-bottom: 6px;
+	margin-top: 6px;
+	background-color: #5383E8;
+	margin-right: 20px;
+	border: 1px solid #5383E8;
+	border-radius: 6px;
+	color: white;
+}
+
+.selectBox {
+	height: 28px;
+	float: right;
+	margin-top: 6px;
+	margin-right: 18px;
+	margin-bottom: 6px;
+	background-color: #232F46;
+	color: white;
+	border: 1px solid #232F46;
+}
+
+#selectBox1 {
+	width: 150px;
+	float: left;
+}
+
+#selectBox2 {
+	width: 66px;
+	float: right;
+}
 
 #root {
 	position: relative;
@@ -229,16 +236,11 @@ button {
 	line-height: 17px;
 }
 
-.find-password-box {
-	float: right;
-	margin-top: 20px;
-}
-
-.find-passwor-text {
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
-	color: #1ea1f7;
+.find-password {
+	border: 1px solid skyblue;
+	background-color: rgba(0, 0, 0, 0);
+	color: skyblue;
+	padding: 5px;
 }
 
 .login-button {
@@ -277,11 +279,11 @@ button {
 
 .select-language-btn {
 	border-radius: 3px;
-    padding: 0;
-    font-weight: 400;
-    font-size: 14px;
-    border: 0;
-    padding-right: 32px;
-    height: 24px;
-    color: #52595f;
+	padding: 0;
+	font-weight: 400;
+	font-size: 14px;
+	border: 0;
+	padding-right: 32px;
+	height: 24px;
+	color: #52595f;
 }

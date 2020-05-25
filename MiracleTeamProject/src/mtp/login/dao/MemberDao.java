@@ -446,5 +446,98 @@ public class MemberDao {
 		return cnt;
 	}// duplecateID end
 
+	public int emailCheck(String email) {
+		int cnt = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "";
+
+			sql += "SELECT count(pwd) as cnt";
+			sql += " FROM MEMBER_GUEST";
+			sql += " WHERE EMAIL = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			
+			if (rs.next()) {
+				
+				cnt = rs.getInt("cnt");
+				return cnt;
+			}
+		} catch (Exception e) {
+			System.out.println("아이디 중복 확인 실패 : " + e);
+		} finally {
+
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}// try end
+		return cnt;
+	}// duplecateID end
+	
+	public String findPassWord(String email) {
+		String pwdVal = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "";
+
+			sql += "SELECT pwd";
+			sql += " FROM MEMBER_GUEST";
+			sql += " WHERE EMAIL = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			
+			if (rs.next()) {
+				
+				pwdVal = rs.getString("pwd");
+				return pwdVal;
+			}
+		} catch (Exception e) {
+			System.out.println("아이디 중복 확인 실패 : " + e);
+		} finally {
+
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}// try end
+		return pwdVal;
+	}// duplecateID end
 }
 
