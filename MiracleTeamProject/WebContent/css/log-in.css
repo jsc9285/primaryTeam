@@ -271,6 +271,7 @@ button {
 	background-color: skyblue;
 	height: 40px;
     width: 150px;
+    cursor: pointer;
 }
 
 .btn_group input:hover {
@@ -278,11 +279,9 @@ button {
 	color: skyblue;
 }
 
-.find-password {
+.signUp {
 	
 	float: right;
-	
-	
 }
 
 .login-button {
@@ -291,7 +290,7 @@ button {
 	color: #fff;
 	border: 0;
 	height: 56px;
-	margin-top: 20px;
+	margin-top: 30px;
 	width: 100%;
 	font-weight: 700;
 	text-align: center;

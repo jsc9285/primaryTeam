@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/log-in.css?ver=1.3" />
-<script type="text/javascript" src="../js/login.js?ver=1.6"></script>
+<link rel="stylesheet" type="text/css" href="../css/log-in.css?ver=1.1" />
+<script type="text/javascript" src="../js/login.js?ver=1.1"></script>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
 
@@ -25,7 +25,7 @@
 
 
 						<!--onsubmit="return nextStepFnc();"   -->
-						<form id="formFirst" action="./login" method="post"
+						<form id="formFirst" action="./login" method="post" name="userInfo"
 							onsubmit="return nextStepFnc();">
 
 							<div class="input-box">
@@ -44,8 +44,8 @@
 								disabled>
 
 							<div class="btn_group">	
-							<input class="signUp" type="button" value="회원가입하기" onclick="location.href='../member/add';">
 							<input class="find-password" type="button" onclick="findPwd()" value="비밀번호 찾기">	
+							<input class="signUp" type="button" value="회원가입하기" onclick="location.href='../member/add';">
 							</div>
 							
 																	

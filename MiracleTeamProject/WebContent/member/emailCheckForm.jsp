@@ -2,13 +2,14 @@
     pageEncoding="EUC-KR"%>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.5" />
+<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.2" />
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
     <title>이메일 중복체크</title>
     
     <style type="text/css">
         #wrap {
             text-align :center;
+            margin-top: 30px;
         }
         
         #chk{

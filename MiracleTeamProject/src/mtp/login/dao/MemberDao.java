@@ -95,8 +95,6 @@ public class MemberDao {
 			pstmt.setString(2, email);
 			pstmt.setString(3, pwd);
 
-			System.out.println(sql);
-
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -401,16 +399,7 @@ public class MemberDao {
 			sql += " FROM MEMBER_GUEST";
 			sql += " WHERE EMAIL = ?";
 			
-			
-			if(conn == null) {
-				System.out.println("conn null");
-			}else {
-				System.out.println("conn not null");
-			}
-
 			pstmt = conn.prepareStatement(sql);
-			
-			System.out.println("ㅎㅇㅎㅇ1");
 			
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();

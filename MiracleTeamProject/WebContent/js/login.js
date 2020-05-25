@@ -66,7 +66,7 @@ function findPwd(){
     
     window.name = "parentForm";
     window.open("FindPwdForm.jsp",
-            "chkForm", "width=500, height=300, resizable = no, scrollbars = no");    
+            "chkForm", "width=500, height=320, resizable = no, scrollbars = no");    
 }
 
 

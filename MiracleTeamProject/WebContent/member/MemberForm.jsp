@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.5" />
-<script type="text/javascript" src="../js/member.js?ver=1.5"></script>
+<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.1" />
+<script type="text/javascript" src="../js/member.js?ver=1.1"></script>
 <title>회원 등록</title>
 
 </head>
@@ -34,9 +34,10 @@
 								<label class="member-input__label" for="email-input">이메일
 									주소</label> <input class="input-contents" type="text" id="email-input"
 									autocomplete="off" value="" name="email" />
+									<input type="hidden" name='emailEqual' value="emailUncheck">
 							</div>
 							<input id="eqEmail" type="button" value="중복확인"
-								onclick="inputEmailChk()">
+								onclick="openEmailChk()" disabled>
 
 							<div class="input-box">
 								<label class="member-input__label" for="name-input">이름 </label>

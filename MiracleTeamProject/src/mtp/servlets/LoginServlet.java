@@ -55,15 +55,12 @@ public class LoginServlet extends HttpServlet {
 			
 			MemberDto memberDto = new MemberDto();
 			
-			System.out.println(email);
-			
 			if(email.equals("admin")) { // 게스트
 				memberDto = memberDao.memberExist(email, pwd);
 			}else{ // 관리자
 				memberDto = memberDao.guestExist(email, pwd);
 			}		
 			
-			System.out.println(memberDto);
 			// 회원이 없다면 로그인 실패 페이지로 이동
 			if(memberDto == null) {
 				RequestDispatcher rd = 
