@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.1" />
+<link rel="stylesheet" type="text/css" href="../css/log-in.css?ver=1.2" />
 <script type="text/javascript" src="../js/login.js?ver=1.5"></script>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
@@ -21,7 +21,7 @@
 						<img id="mainImg" class="member-card-layout__logo-image"
 							src="../img/pika4.gif" alt="로고">
 					</div>
-					<div class="info-div">
+				
 
 
 						<!--onsubmit="return nextStepFnc();"   -->
@@ -49,7 +49,7 @@
 							</div>
 							
 																	
-							</div>
+							
 						</form>
 					</div>
 				</div>

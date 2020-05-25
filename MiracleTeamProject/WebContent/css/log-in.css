@@ -1,12 +1,5 @@
 @charset "UTF-8";
 
-body, html {
-	width: 100%;
-	height: 100%;
-	font-size: 14px;
-	vertical-align: baseline;
-}
-
 div {
 	display: block;
 }
@@ -17,96 +10,71 @@ hr {
 
 button {
 	border: 0;
-}
-
-#header {
-	height: 40px;
-	background-color: #232F46;
-}
-
-.headerImgL {
-	height: 40px;
-	float: left;
-}
-
-#yasuo {
-	height: 32px;
-	margin-bottom: 4px;
-	margin-top: 4px;
-	margin-left: 40px;
-}
-
-.headerImgR {
-	height: 40px;
-	float: right;
-}
-
-#loginBtn {
-	height: 28px;
-	width: 70px;
-	margin-bottom: 6px;
-	margin-top: 6px;
-	background-color: #5383E8;
-	margin-right: 20px;
-	border: 1px solid #5383E8;
-	border-radius: 6px;
-	color: white;
-}
-
-.selectBox {
-	height: 28px;
-	float: right;
-	margin-top: 6px;
-	margin-right: 18px;
-	margin-bottom: 6px;
-	background-color: #232F46;
-	color: white;
-	border: 1px solid #232F46;
-}
-
-#selectBox1 {
-	width: 150px;
-	float: left;
-}
-
-#selectBox2 {
-	width: 66px;
-	float: right;
+	cursor: pointer;
 }
 
 #root {
-	position: relative;
-	min-height: 100%;
 	background-color: #f3f5f7;
+	width: 1000px;
+	margin: auto;
 }
 
 .member-card-layout {
-	padding: 170px 0 200px;
+	height: 465px;
+    padding: 50px 84px 85px 84px;
 }
 
 .member-card {
 	position: relative;
 	margin: 0 auto;
 	width: 450px;
-	height: 726px;
+	height: 500px;
 	background-color: #fff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
 
+.member-card-join {
+	position: relative;
+	margin: 0 auto;
+	width: 450px;
+	height: 620px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+	box-sizing: border-box;
+}
+
+.member-card-war {
+	width: 450px;
+	height: 620px;
+}
+
+#main-email {
+	width: 280px;
+}
+
+#eqEmail {
+	position: absolute;
+	top: 230px;
+	right: 20px;
+	width: 100px;
+	height: 30px;
+}
+
 .member-card-layout-inner {
 	margin: 0 40px;
-	padding-bottom: 40px;
 }
 
 .member-card-layout__logo {
-	padding-top: 48px;
+	width: 370px;
+	height: 152px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	text-align: center;
-	margin-bottom: 42px;
 }
 
 .member-card-layout__logo-image {
-	width: 128px;
-	height: 32px;
+	width: 160px;
+	height: 140px;
 }
 
 .info-div {
@@ -126,7 +94,7 @@ button {
 	background-color: #3c5a99;
 	border-radius: 3px;
 	padding: 3px 0px 0px 2px;
-	box-sizing: border-box;
+	cursor: pointer;
 }
 
 .apple-bnt {
@@ -136,7 +104,7 @@ button {
 	border-radius: 3px;
 	margin-top: 12px;
 	padding: 3px 0px 0px 2px;
-	box-sizing: border-box;
+	cursor: pointer;
 }
 
 .or-line {
@@ -146,13 +114,11 @@ button {
 	font-weight: 400;
 	font-size: 12px;
 	color: #c5cbd0;
-	vertical-align: top;
 	text-align: center;
 	line-height: 14px;
 }
 
 .hr-left, .hr-right {
-	display: block;
 	width: 160px;
 	height: 1px;
 	background-color: #dddfe4
@@ -170,7 +136,6 @@ button {
 	margin-top: 42px;
 	font-weight: 400;
 	font-size: 16px;
-	line-height: 19px
 }
 
 .input-box {
@@ -186,20 +151,56 @@ button {
 
 .email-input {
 	margin-top: 27px;
-	position: relative;
 	padding: 10px 0 11px;
 	border-bottom: 1px solid #dddfe4;
 }
 
 .input-contents {
-	position: relative;
-	z-index: 10;
 	border: 0;
-	padding: 0;
 	background-color: transparent;
-	outline: 0;
+	outline: 0; /* 테두리 제거 */
 	width: 400px;
 	font-size: 16px;
+}
+
+.member-input-wrong-message {
+	font-weight: 400;
+	font-size: 14px;
+	margin-top: 15px;
+	position: relative;
+	padding-left: 24px;
+	color: #fe453b;
+}
+
+.email-wrong-message {
+	position: absolute;
+	visibility: hidden;
+	right: 20px;
+	top: 300px;
+	width: 200px;
+	height: 200px;
+	font-weight: 400;
+	font-size: 14px;
+	margin-top: 15px;
+	color: #fe453b;
+}
+
+.wrong-img {
+	padding-top: 2px;
+	float: left;
+	margin-right: 3px;
+	width: 200px;
+}
+
+.warning {
+	position: absolute;
+	left: 0;
+	top: 2px;
+	content: "";
+	display: block;
+	width: 16px;
+	height: 16px;
+	background-size: 16px 16px;
 }
 
 .member-input__label {
@@ -207,9 +208,11 @@ button {
 	position: absolute;
 	left: 0;
 	top: 11px;
+	transform-origin: bottom left;
+	transition: all .3s cubic-bezier(.4, 0, .2, 1);
 }
 
-.find-box {
+.checks {
 	width: 370px;
 	height: 40px;
 }
@@ -221,42 +224,78 @@ button {
 	float: left;
 }
 
-.login-check-box {
-	width: 22px;
-	height: 22px;
-	cursor: pointer;
-	margin: 0px;
+.checks input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
+	display: none;
 }
 
-.login-check-box-label {
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
+.checks input[type="checkbox"]+label {
+	position: relative;
+	padding-left: 30px; /* 글자와 체크박스 사이의 간격을 변경 */
 	color: #52595f;
-	line-height: 17px;
+}
+
+.checks input[type="checkbox"]+label:before { /* 가짜 체크박스 */
+	content: '';
+	position: absolute;
+	left: 0;
+	top: -2px; /* 이 값을 변경해서 글자와의 정렬 */
+	width: 21px; /* 체크박스의 너비를 지정 */
+	height: 21px; /* 체크박스의 높이를 지정 */
+	text-align: center;
+	background: #ffffff;
+	border: 1px solid #dddfe4;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.checks input[type="checkbox"]:checked+label:before { /* 체크박스를 체크했을때 */
+	content: '\2714';
+	color: #1ea1f7;
+	background: #ffffff;
+	border: 1px solid #1ea1f7;
+	cursor: pointer;
+}
+
+.btn_group {
+	margin-top: 25px;
+	font-family: 나눔고딕;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.btn_group input {
+	border: 1px solid skyblue;
+	padding: 5px;
+	border-radius: 5px;
+	color: white;
+	background-color: skyblue;
+	height: 40px;
+    width: 150px;
+}
+
+.btn_group input:hover {
+	background-color: rgba(0, 0, 0, 0);
+	color: skyblue;
 }
 
 .find-password {
-	border: 1px solid skyblue;
-	background-color: rgba(0, 0, 0, 0);
-	color: skyblue;
-	padding: 5px;
+	
+	float: right;
+	
+	
 }
 
 .login-button {
 	font-size: 16px;
 	border-radius: 3px;
-	display: inline-block;
-	text-decoration: none;
 	color: #fff;
 	border: 0;
 	height: 56px;
-	margin-top: 40px;
+	margin-top: 20px;
 	width: 100%;
-	padding: 0 20px;
 	font-weight: 700;
 	text-align: center;
-	background-color: #DDDFE4
+	background-color: #DDDFE4;
 }
 
 .hello-text {
@@ -272,18 +311,49 @@ button {
 .member-link {
 	font-weight: 400;
 	font-size: 14px;
-	line-height: 20px;
 	color: #1ea1f7;
-	text-decoration: underline;
 }
 
-.select-language-btn {
+.box {
+	width: 120px;
+	height: 120px;
+	border-radius: 70%;
+	overflow: hidden;
+	margin: auto;
+}
+
+.profile {
+	width: 100%;
+	height: 100%;
+	object-fssssit: cover;
+	margin: auto;
+}
+
+.user-name {
+	text-align: center;
+}
+
+#main-bnt {
+	width: 250px;
+	height: 30px;
+	background-color: white;
+	border-radius: 10px;
+	margin: 0px 60px;
+}
+
+.profile-bnt {
+	width: 370px;
+	height: 56px;
+	background-color: white;
 	border-radius: 3px;
-	padding: 0;
-	font-weight: 400;
-	font-size: 14px;
-	border: 0;
-	padding-right: 32px;
-	height: 24px;
-	color: #52595f;
+	margin-top: 16px;
+	box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, .2);
+}
+
+.profile-info {
+	text-align: center;
+	font-size: 30px;
+	line-height: 19px;
+	margin-bottom: 40px;
+	text-shadow: aqua;
 }

@@ -19,7 +19,6 @@ window.onload = function() {
 		inputObj[i].addEventListener('blur', placeDownFnc)
 		inputObj[i].addEventListener('keyup', submitFnc)
 	}
-	setInterval(metaFnc, 4000);
 
 	inputObj[0].addEventListener('keyup', emailFnc);
 	inputObj[1].addEventListener('keyup', nameFnc);
@@ -30,22 +29,26 @@ window.onload = function() {
 function emailFnc() {
 	
 	var wrongDiv = document.getElementById('wrongBox');
+	var cuteImg = document.getElementById('mainImg');
 	
 	var re2 = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
 
 	if (!re2.test(this.value)) {
 		wrongDiv.style.color = "red";
-		wrongDiv.innerHTML = "유효한 이메일 주소를 입력해 주시기 바랍니다.";	
+		wrongDiv.innerHTML = "유효한 이메일 주소를\n 입력해 주시기 바랍니다.";	
+		cuteImg.setAttribute('src', "../img/pika7.gif");
 		emailCheck = false;
 		
 	} else if (re2.test(this.value)) {
 		wrongDiv.innerHTML = "";	
 		wrongDiv.style.color = "blue";
+		cuteImg.setAttribute('src', "../img/pika3.gif");
 		emailCheck = true;
 	} 
 	
 	if (this.value.length == 0) {
 		wrongDiv.innerHTML = "";	
+		cuteImg.setAttribute('src', "../img/pika2.gif");
 		emailCheck = false;
 	}
 }
@@ -53,21 +56,24 @@ function emailFnc() {
 function nameFnc() {
 	
 	var wrongDiv = document.getElementById('wrongBox');
+	var cuteImg = document.getElementById('mainImg');
 	
 	var re3 = /^[가-힣]{2,4}$/;
 	
 	if (!re3.test(this.value)) {
 		wrongDiv.style.color = "red";
 		wrongDiv.innerHTML = "이름은 최소 2자 최대 4자 한글로만 입력가능합니다.";	
+		cuteImg.setAttribute('src', "../img/pika7.gif");
 		nickNameCheck = false;
 	} else if (re3.test(this.value)) {
 		wrongDiv.innerHTML = "사용가능한 이름입니다.";	
 		wrongDiv.style.color = "blue";
+		cuteImg.setAttribute('src', "../img/pika3.gif");
 		nickNameCheck = true;
 	}
 	
 	if (this.value.length == 0) {
-		
+		cuteImg.setAttribute('src', "../img/pika2.gif");
 		wrongDiv.innerHTML = "";	
 		nickNameCheck = false;
 	}
@@ -76,21 +82,25 @@ function nameFnc() {
 function pwdFnc() {
 	
 	var wrongDiv = document.getElementById('wrongBox');
+	var cuteImg = document.getElementById('mainImg');
 	
 	var re = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
 
 	if (!re.test(this.value)) {
 		wrongDiv.style.color = "red";
 		wrongDiv.innerHTML = "패스워드는 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력";
+		cuteImg.setAttribute('src', "../img/pika7.gif");
 		pwdCheck = false;
 		
 	} else if (re.test(this.value)) {
 		wrongDiv.innerHTML = "사용가능한 비밀번호입니다.";
+		cuteImg.setAttribute('src', "../img/pika3.gif");
 		wrongDiv.style.color = "blue";
 		pwdCheck = true;
 	}
 	
 	if (this.value.length == 0) {
+		cuteImg.setAttribute('src', "../img/pika2.gif");
 		wrongDiv.innerHTML = "";	
 		pwdCheck = false;
 	}	
@@ -99,23 +109,27 @@ function pwdFnc() {
 function equalPwd() {
 	var inputObj = document.getElementsByClassName('input-contents');
 	var wrongDiv = document.getElementById('wrongBox');
-
+	var cuteImg = document.getElementById('mainImg');
+	
 	if (this.value.length >= inputObj[2].value.length || this.value.length <= inputObj[2].value.length
 			&& this.value != inputObj[2].value ) {
 		wrongDiv.style.color = "red";
 		this.focus();
 		wrongDiv.innerHTML = "입력하신 비밀번호와 일치하지 않습니다.";
+		cuteImg.setAttribute('src', "../img/pika7.gif");
 		pwdEqCheck = false;
 	}
 	
 	if (this.value == inputObj[2].value) {
 		wrongDiv.style.color = "blue";
 		wrongDiv.innerHTML = "입력하신 비밀번호와 일치합니다.";
+		cuteImg.setAttribute('src', "../img/pika3.gif");
 		pwdEqCheck = true;
 	}
 	
 	if (this.value.length == 0) {
 		wrongDiv.innerHTML = "";
+		cuteImg.setAttribute('src', "../img/pika2.gif");
 		pwdEqCheck = false;
 	}
 
@@ -130,17 +144,6 @@ function check(re, what, message) {
 	what.focus();
 	
 	return false;
-}
-
-function metaFnc() {
-	var imgArray = new Array(8);
-
-	for (var i = 0; i < imgArray.length; i++) {
-		imgArray[i] = "../img/pika" + i + ".gif";
-	}
-	var imgNum = Math.round(Math.random() * 7);
-	var objImg = document.getElementById("mainImg");
-	objImg.src = imgArray[imgNum];
 }
 
 function placeFlyFnc() {

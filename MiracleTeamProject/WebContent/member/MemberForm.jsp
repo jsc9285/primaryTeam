@@ -21,9 +21,9 @@
 			<div class="member-card-join">
 				<div class="member-card-layout-inner">
 
-					<div class="member-card-layout__logo">
+					<div id="imgDiv" class="member-card-layout__logo">
 						<img id="mainImg" class="member-card-layout__logo-image"
-							src="../img/pika0.gif" alt="로고">
+							src="../img/pika4.gif" alt="로고">
 						<div id="wrongBox"></div>
 					</div>
 					<div class="info-div">
