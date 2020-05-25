@@ -49,6 +49,27 @@
 	color: #CD5C5C;
 }
 
+.noticeList{
+	color: #FF0000;
+	margin-right: 90px;
+	text-decoration: none;
+}
+
+.noticeList:hover{
+	text-decoration: underline;
+}
+
+.noticeTxt{
+	background-color: #FFF0F5;
+	color: #FF0000;
+	font-weight: bold;
+	width: 75px;
+	border: 1px solid red;
+	border-radius: 5px;
+	margin-left: 15px;
+	float: left;
+}
+
 table {
 	border: 3px solid lightgray;
 	margin: auto;
@@ -75,7 +96,7 @@ tr, td {
 			<br>
 			<div id="topForm">
 				<c:if test="${member.email.equals('admin')}">
-					<input type="button" value="글쓰기" onclick="location.href = './post?no=${member.no}'">
+					<input style="margin-right: 50px;" type="button" value="글쓰기" onclick="location.href = './post?no=${member.no}'">
 				</c:if>
 			</div>
 			<br>
@@ -90,7 +111,7 @@ tr, td {
 					<c:forEach var="notice" items="${noticeList}">
 						<tr>
 							<td>${notice.no}</td>
-							<td><a href='./select?no=${notice.no}&page=${spage}'>${notice.title}</a></td>
+							<td><a class='noticeTxt'>공지</a><a class='noticeList' href='./select?no=${notice.no}&page=${spage}'>${notice.title}</a></td>
 							<td>${notice.writer}</td>
 						</tr>
 					</c:forEach>

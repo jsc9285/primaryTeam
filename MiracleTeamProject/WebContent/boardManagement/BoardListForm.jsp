@@ -42,6 +42,15 @@
 	color: #CD5C5C;
 	}
 	
+	.noticeList{
+		color: #000;
+		text-decoration: none;
+	}
+
+	.noticeList:hover{
+		text-decoration: underline;
+	}
+	
 	table {
 		border: 3px solid lightgray;
 		margin: auto;
@@ -70,7 +79,7 @@
 	<c:if test="${member ne null}">
 	    <br>
 	    <div id="topForm">
-	         <input type="button" value="글쓰기" onclick="location.href = './write?no=${member.no}'">
+	         <input style="margin-right: 50px;" type="button" value="글쓰기" onclick="location.href = './write?no=${member.no}'">
 	    </div>
 	    <br>
 	    <div id="board">
@@ -85,7 +94,7 @@
 		        	<tr>
 		                <td>${boardManagementDto.no}</td>
 		                <td>
-		                	<a href='./search?no=${boardManagementDto.no}&page=${spage}'>
+		                	<a class='noticeList' href='./search?no=${boardManagementDto.no}&page=${spage}'>
 		                		${boardManagementDto.title}
 		                	</a>
 		                </td>
