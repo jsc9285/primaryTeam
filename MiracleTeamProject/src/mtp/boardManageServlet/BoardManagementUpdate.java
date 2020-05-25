@@ -37,10 +37,12 @@ public class BoardManagementUpdate extends HttpServlet{
 			
 			BoardManagementDao boardManagementDao = new BoardManagementDao();
 			boardManagementDao.setConnection(conn);
+			String page = req.getParameter("page");
 			
 			BoardManagementDto boardManagementDto = boardManagementDao.boardSelectOne(no);
 			
 			req.setAttribute("boardManagementDto", boardManagementDto);
+			req.setAttribute("page", page);
 			rd = req.getRequestDispatcher("./BoardUpdateForm.jsp");
 			rd.forward(req, res);
 

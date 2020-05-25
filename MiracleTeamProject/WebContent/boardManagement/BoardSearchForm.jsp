@@ -9,62 +9,78 @@
 
 <title>게시물 조회</title>
 <style type="text/css">
-     #wrap {
-         width: 800px;
-         margin: 0 auto 0 auto;
+     #mainWrap {
+         width: 1000px;
+         height: 600px;
+         margin: auto;
      }
-     #topForm{
-         text-align :right;
-     }
-     #board, #pageForm, #searchForm{
-         text-align :center;
-     }
+    .subTitle {
+		height: 16;
+		font-family: '돋움';
+		font-size: 12;
+		text-align: center;
+	}
+	.inputBox{
+		border: none;
+	}
+	.inputArea{
+		border: none; 
+		resize: none; 
+	}
      
-     #bList{
-         text-align :center;
+     table {
+       	border: 3px solid lightgray;
+       	margin: auto;
+       	width: 700px;
      }
+        
+   	tr, td {
+   		border: 1px solid lightgray;
+   	}
 </style>
 
 </head>
 
 <body>
-<jsp:include page="/common/Header.jsp" />		
-	<div style="width: 1000px; margin: auto;">
+<jsp:include page="/common/Header.jsp" />
+		
+	<div id='mainWrap'>
 		<br>
 		<b><font size="6" color="gray">게시물 조회</font></b>
 		<br>
 	
 		<form action="./update" method="get">
 			<input type="hidden" name="no" value='${boardManagementDto.no}'/>
-			<table width="700" border="3" bordercolor="lightgray" align="center">
+			<input type="hidden" name="page" value='${page}'/>
+			<table>
 				<tr>
-					<td id="title">작성자</td>
+					<td class="subTitle">작성자</td>
 					<td>
 						<input type="text" name="writer" value='${boardManagementDto.writer}'
-							 readonly="readonly"/>
+							 maxlength="15" readonly="readonly" class='inputBox'/>
 					</td>
 				</tr>
 				<tr>
-					<td id="title">제 목</td>
+					<td class="subTitle">제 목</td>
 					<td>
-						<input type="text" name="title" size="70"
+						<input class='inputBox' type="text" name="title" size="70"
 							   maxlength="100" value='${boardManagementDto.title}' readonly="readonly"/>
 					</td>
 				</tr>
 				<tr>
-					<td id="title">내 용</td>
+					<td class="subTitle">내 용</td>
 					<td>
-						<textarea name="context" cols="72" rows="20"
-							 readonly="readonly">${boardManagementDto.context}</textarea>
+						<textarea class='inputArea' name="context" cols="72" rows="20" 
+							readonly="readonly">${boardManagementDto.context}</textarea>
 					</td>
 				</tr>
 				<tr>
-					<td id="title">파일첨부</td>
+					<td class="subTitle">파일첨부</td>
 					<td>
 						<input type="file" name="board_file"/>
 					</td>
 				</tr>			
-				<tr align="center" valign="middle">
+				<tr style="text-align: center;">
 					<td colspan="5">						
 						<c:if test="${member.email.equals('admin') || member.name 
 							== boardManagementDto.writer}">
@@ -78,7 +94,6 @@
 			</table>
 		</form>
 	</div>
-	<br>
 	<jsp:include page="/common/Bottom.jsp" />
 </body>
 </html>

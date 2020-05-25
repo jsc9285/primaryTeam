@@ -9,53 +9,71 @@
 <title>글 작성</title>
 
 <style type="text/css">
-        #title{
-            height : 16;
-            font-family :'돋움';
-            font-size : 12;
-            text-align :center;
+        #mainWrap{
+			width: 1000px;
+			height: 600px;
+			margin: auto;
+		}
+		.subTitle {
+			height: 16;
+			font-family: '돋움';
+			font-size: 12;
+			text-align: center;
+		}
+
+        table {
+        	border: 3px solid lightgray;
+        	margin: auto;
+        	width: 700px;
         }
+        
+       	tr, td {
+       		border: 1px solid lightgray;
+       	}
 </style>
 
 <script type="text/javascript">
-
+	function pageMoveListFnc(){
+		location.href = "./list";
+	}
 </script>
 
 </head>
 
 <body>
 <jsp:include page="../common/Header.jsp"/>
-<div style="width: 1000px; margin: auto;">
+	<div id='mainWrap'>
 	<br>
     <b><font size="6" color="gray">글작성</font></b>
     <br>
 	    
 	    <form method="post" action="./write">
-	    <table width="700" border="3" bordercolor="lightgray" align="center">
+	    <table>
 	        <tr>
-	            <td id="title">작성자</td>
+	            <td class="subTitle">작성자</td>
 	            <td>
-	            	<input name="writer" type="text" value="${member.name}">
+	            	<input name="writer" type="text" value="${member.name}" 
+	            	readonly="readonly" maxlength="10">
 	            </td>
 	        </tr>
 	            <tr>
-	            <td id="title">
+	            <td class="subTitle">
 	                             제 목
 	            </td>
 	            <td>
-	                <input name="title" type="text">
+	                <input name="title" type="text" maxlength="50">
 	            </td>        
 	        </tr>
 	        <tr>
-	            <td id="title">
+	            <td class="subTitle">
 	                             내 용
 	            </td>
 	            <td>
-	                <textarea name="context" cols="72" rows="20"></textarea>            
+	                <textarea name="context" cols="72" rows="20" style="resize: none"></textarea>            
 	            </td>        
 	        </tr>
 	        <tr>
-	            <td id="title">
+	            <td class="subTitle">
 	                             파일첨부
 	            </td>
 	            <td>
@@ -72,6 +90,7 @@
 	        </tr>
 	    </table>    
 	</form>
+	</div>
 <jsp:include page="../common/Bottom.jsp"/>
 </body>
 </html>

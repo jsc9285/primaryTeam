@@ -41,6 +41,16 @@
 	border: 1px solid #CD5C5C;
 	color: #CD5C5C;
 	}
+	
+	table {
+		border: 3px solid lightgray;
+		margin: auto;
+		width: 700px;
+	}  
+    
+	tr, td {
+		border: 1px solid lightgray;
+	}
 </style>
 
 <script type="text/javascript">
@@ -52,19 +62,19 @@
 
 <body>
 <jsp:include page="../common/Header.jsp"/>
-<div style="width: 1000px; margin: auto;">
+<div style="width: 1000px; height: 600px; margin: auto;">
 	<br>
 		<b><font size="6" color="gray">게시판</font></b>
 	<br> 
 	<div id="wrap">
-	
+	<c:if test="${member ne null}">
 	    <br>
 	    <div id="topForm">
 	         <input type="button" value="글쓰기" onclick="location.href = './write?no=${member.no}'">
 	    </div>
 	    <br>
 	    <div id="board">
-	        <table id="bList" width="800" border="3" bordercolor="lightgray">
+	        <table id="bList">
 	            <tr heigh="30">
 	                <td style="width: 100px;">글번호</td>
 	                <td style="width: 550px;">제목</td>
@@ -119,6 +129,10 @@
             	</a>
 	        </form>    
 	    </div>
+	    </c:if>
+	    <c:if test="${member eq null}">
+			<b><font size="4" color="gray" >로그인이 필요한 서비스입니다.</font></b>
+		</c:if>
 	</div>  
 	<br>
 </div>
