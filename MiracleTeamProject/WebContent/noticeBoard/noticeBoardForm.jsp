@@ -8,6 +8,12 @@
 <title>공지사항 게시판</title>
 
 <style type="text/css">
+#mainWrap{
+	width: 1000px;
+	height: 600px;
+	margin: auto;
+}
+
 #wrap {
 	width: 800px;
 	margin: 0 auto 0 auto;
@@ -42,19 +48,32 @@
 	border: 1px solid #CD5C5C;
 	color: #CD5C5C;
 }
-</style>
 
+table {
+	border: 3px solid lightgray;
+	margin: auto;
+	width: 700px;
+}  
+    
+tr, td {
+	border: 1px solid lightgray;
+}
+</style>
 </head>
 
 <body>
 
-	<jsp:include page="/common/Header.jsp" />
-	<div style="width: 1000px; height: 600px; margin: auto;">
+	<jsp:include page="/common/Header.jsp" /> 
+	
+	<div id='mainWrap'>
 		<br>
 			<b><font size="6" color="gray">공지 게시판</font></b>
 		<br>
+		<div id='testDiv' style="background-color: red; width: 200px; height: 200px;">
+		
+		</div>
 		<div id="wrap">
-			<c:if test="${member ne null}">
+			<c:if test="${member ne null}"> 
 			<br>
 			<div id="topForm">
 				<c:if test="${member.email.equals('admin')}">
@@ -63,8 +82,8 @@
 			</div>
 			<br>
 			<div id="board">
-				<table id="bList" width="800" border="3" bordercolor="lightgray">
-					<tr heigh="30">
+				<table id="bList">
+					<tr>
 						<td style="width: 100px;">글번호</td>
 						<td style="width: 550px;">제목</td>
 						<td style="width: 150px;">작성자</td>
@@ -81,6 +100,7 @@
 				</table>
 			</div>
 			<br>
+			
 			<div id="pageForm">
 				<c:if test="${startPage != 1}">
 					<a href='.list?page=${startPage-1}'>[ 이전 ]</a>			
@@ -99,7 +119,9 @@
 					<a href='.list?page=${endPage+1}'>[ 다음 ]</a>			
 				</c:if>
 			</div>
+			
 			<br>
+			
 			<div id="searchForm">
 				<form action="./list" method="get">
 					<select name="opt">
@@ -112,13 +134,16 @@
 						<input type="submit" value="검색" />
 				</form>
 			</div>
+			
 			</c:if>
 			<c:if test="${member eq null}">
 				<b><font size="4" color="gray" >로그인이 필요한 서비스입니다.</font></b>
 			</c:if>
+			
 		</div>		
 		<br>		
 	</div>
+	
 	<jsp:include page="/common/Bottom.jsp" />
 
 </body>

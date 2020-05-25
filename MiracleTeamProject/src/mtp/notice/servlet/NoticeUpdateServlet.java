@@ -73,12 +73,7 @@ public class NoticeUpdateServlet extends HttpServlet{
 			String writer = req.getParameter("writer");
 			String context = req.getParameter("context");
 			
-			NoticeDto noticeDto = new NoticeDto();
-			
-			noticeDto.setNo(no);
-			noticeDto.setTitle(title);
-			noticeDto.setWriter(writer);
-			noticeDto.setContext(context);
+			NoticeDto noticeDto = new NoticeDto(no, title, writer, context);
 			
 			NoticeDao noticeDao = new NoticeDao();
 			noticeDao.setConnection(conn);

@@ -9,7 +9,9 @@
 </head>
 
 <body>
-	
+
+<!-- 	미구현 기능 -->
+
 	<jsp:include page="/common/Header.jsp" />	
 	
 	<div style="width: 1000px; margin: auto;">
