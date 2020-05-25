@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="mtp.login.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,18 +13,27 @@ pageEncoding="UTF-8"%>
 <h3>* 아이디 중복 확인 결과 *</h3>
 <%
 //1) 사용가능한 아이디일 경우, 아이디 입력 폼에 넣기 위함
-String id=request.getParameter("id");
-int cnt=dao.duplecateID(id);
-out.println("입력 ID : <strong>" + id + "</stong>");
+String email=request.getParameter("email");
+System.out.println(email);
+		
+MemberDao dao = new MemberDao();
+
+Connection conn = null;
+ServletContext sc = this.getServletContext();
+conn = (Connection) sc.getAttribute("conn");
+
+dao.setConnection(conn);
+int cnt=dao.duplecateEmail(email);
+out.println("입력 ID : <strong>" + email + "</stong>");
 if(cnt==0){
-out.println("<p>사용 가능한 아이디입니다.</p>");
-out.println("<a href='javascript:apply(\"" + id + "\")'>[적용]</a>");
+out.println("<p>사용 가능한 이메일입니다.</p>");
+out.println("<a href='javascript:apply(\"" + email + "\")'>[적용]</a>");
 %>
 <script>
-function apply(id){
+function apply(email){
 //2) 중복확인 id를 부모창에 적용
 //부모창 opener
-opener.document.regForm.id.value=id;
+opener.document.regForm.email.value=email;
 window.close(); //창닫기
 }//apply () end
 </script>

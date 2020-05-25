@@ -389,6 +389,62 @@ public class MemberDao {
 		// 회원이 조회가 안된 경우
 		return null;
 	}
+	
+	public int duplecateEmail(String email) {
+		int cnt = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "";
+
+			sql += "SELECT count(email) as cnt";
+			sql += " FROM MEMBER_GUEST";
+			sql += " WHERE EMAIL = ?";
+			
+			
+			if(conn == null) {
+				System.out.println("conn null");
+			}else {
+				System.out.println("conn not null");
+			}
+
+			pstmt = conn.prepareStatement(sql);
+			
+			System.out.println("ㅎㅇㅎㅇ1");
+			
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			
+			if (rs.next()) {
+				
+				cnt = rs.getInt("cnt");
+				return cnt;
+			}
+		} catch (Exception e) {
+			System.out.println("아이디 중복 확인 실패 : " + e);
+		} finally {
+
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}// try end
+		return cnt;
+	}// duplecateID end
 
 }
 

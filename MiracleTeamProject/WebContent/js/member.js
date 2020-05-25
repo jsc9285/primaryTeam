@@ -186,7 +186,7 @@ function submitFnc() {
 }
 
 //email 중복체크
-function emailCheck(){
+function inputEmailChk(){
 //새창 만들기
 window.open("emailCheckForm.jsp", "emailwin", "width=400, height=350");
 }//emailCheck() end
