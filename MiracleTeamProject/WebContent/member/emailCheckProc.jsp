@@ -13,8 +13,8 @@ pageEncoding="UTF-8"%>
 <h3>* 아이디 중복 확인 결과 *</h3>
 <%
 //1) 사용가능한 아이디일 경우, 아이디 입력 폼에 넣기 위함
+
 String email=request.getParameter("email");
-System.out.println(email);
 		
 MemberDao dao = new MemberDao();
 
@@ -33,7 +33,7 @@ out.println("<a href='javascript:apply(\"" + email + "\")'>[적용]</a>");
 function apply(email){
 //2) 중복확인 id를 부모창에 적용
 //부모창 opener
-opener.document.regForm.email.value=email;
+opener.document.userInfo.email.value=email;
 window.close(); //창닫기
 }//apply () end
 </script>

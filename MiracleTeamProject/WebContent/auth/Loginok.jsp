@@ -19,7 +19,7 @@
 	<div
 		style="width: 1000px; margin: auto; background-color: #f3f5f7; text-align: center;">
 		<p onclick="PageMoveFnc('/auth/login');">
-			<img style="width: 1000px; height: 600px;" src="../img/pika.gif"
+			<img style="width: 1000px; height: 600px;" src="../img/poke3.gif"
 				alt="MainImg">
 		</p>
 	</div>

@@ -1,20 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>idCheckForm.jsp</title>
-</head>
-<body>
-	<div style="text-align: center">
-		<h3>* ì•„ì´ë”” ì¤‘ë³µí™•ì¸ *</h3>
-		<form method="post" action="emailCheckProc.jsp">
-			ì´ë©”ì¼ : <input type="text" name="email" maxlength="20" autofocus>
-			<input type="submit" value="ì¤‘ë³µí™•ì¸">
-		</form>
-	</div>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+    <title>¾ÆÀÌµğ Áßº¹ Ã¼Å©</title>
+    
+    <style type="text/css">
+        #wrap {
+            width: 490px;
+            text-align :center;
+            margin: 0 auto 0 auto;
+        }
+        
+        #chk{
+            text-align :center;
+        }
+        
+        #cancelBtn{
+            visibility:visible;
+        }
+        
+        #useBtn{
+             visibility:hidden;
+        }
+ 
+   </style>
+    
+    <script type="text/javascript">
+        
+        // È¸¿ø°¡ÀÔÃ¢ÀÇ ¾ÆÀÌµğ ÀÔ·Â¶õÀÇ °ªÀ» °¡Á®¿Â´Ù.
+        function pValue(){
+            document.getElementById("userEmail").value = opener.document.userInfo.email.value;
+        }
 
+   </script>
+    
+</head>
+<body onload="pValue()">
+<div id="wrap">
+    <br>
+    <b><font size="4" color="gray">¾ÆÀÌµğ Áßº¹Ã¼Å©</font></b>
+    <hr size="1" width="460">
+    <br>
+    <div id="chk">
+        <form id="checkForm" method="post" action="emailCheckProc.jsp">
+            <input type="text" name="email" id="userEmail" maxlength="20" autofocus>
+            <input type="submit" value="Áßº¹È®ÀÎ">
+        </form>
+        <div id="msg"></div>
+        <br>
+        <input id="cancelBtn" type="button" value="Ãë¼Ò" onclick="window.close()"><br>
+        <input id="useBtn" type="button" value="»ç¿ëÇÏ±â" onclick="sendCheckValue()">
+    </div>
+		
+</div>    
 </body>
 </html>
 

@@ -46,6 +46,29 @@ button {
 	height: 620px;
 	background-color: #fff;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+	box-sizing: border-box;
+}
+
+.member-card-war {
+	
+	width: 450px;
+	height: 620px;
+}
+
+#main-email {
+	
+	width: 280px;
+	
+}
+
+#eqEmail {
+	position: absolute;
+    top: 230px;
+    right: 20px;
+    width: 100px;
+    height: 30px;
+	
+	
 }
  
 .member-card-layout-inner {
@@ -54,7 +77,10 @@ button {
 }
 
 .member-card-layout__logo {
-	padding-top: 48px;
+	width: 370px;
+	height: 152px;
+	padding-top: 20px;
+	padding-bottom: 20px;	
 	text-align: center;
 }
 
@@ -159,6 +185,12 @@ button {
 }
 
 .email-wrong-message {
+	position: absolute;
+	visibility: hidden;
+	right: 20px;
+    top: 300px;
+	width: 200px;
+	height: 200px;
 	font-weight: 400;
 	font-size: 14px;
 	margin-top: 15px;
@@ -169,6 +201,7 @@ button {
 	padding-top: 2px;
 	float: left;
 	margin-right: 3px;
+	width: 200px;
 }
 
 .warning {
@@ -322,4 +355,5 @@ button {
 	margin-bottom: 40px;
 	text-shadow: aqua;
 }
+
 

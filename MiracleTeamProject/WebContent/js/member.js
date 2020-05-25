@@ -14,7 +14,7 @@ window.onload = function() {
 	var placeObj = document.getElementsByClassName('member-input__label');
 	var eqObj = document.getElementById('eqEmail');
 	
-	for (var i = 0; i < 4; i++) {
+	for (var i = 0; i < 4; i++) {	
 		inputObj[i].addEventListener('focus', placeFlyFnc)
 		inputObj[i].addEventListener('blur', placeDownFnc)
 		inputObj[i].addEventListener('keyup', submitFnc)
@@ -25,62 +25,65 @@ window.onload = function() {
 	inputObj[1].addEventListener('keyup', nameFnc);
 	inputObj[2].addEventListener('keyup', pwdFnc);
 	inputObj[3].addEventListener('keyup', equalPwd);
-	
-	eqObj.addEventListener('onclick', emailCheck);
 }
 
 function emailFnc() {
 	
-	var wrongDiv = document.getElementsByClassName("email-wrong-message")[0];
+	var wrongDiv = document.getElementById('wrongBox');
 	
 	var re2 = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
 
 	if (!re2.test(this.value)) {
 		wrongDiv.style.color = "red";
-		wrongDiv.innerHTML = "<img class='wrong-img' src='../img/warning.svg'\">"
-			+ "유효한 이메일 주소를 입력해 주시기 바랍니다.";	
+		wrongDiv.innerHTML = "유효한 이메일 주소를 입력해 주시기 바랍니다.";	
+		emailCheck = false;
+		
 	} else if (re2.test(this.value)) {
-		wrongDiv.innerHTML = "사용가능한 이메일입니다.";	
+		wrongDiv.innerHTML = "";	
 		wrongDiv.style.color = "blue";
 		emailCheck = true;
 	} 
 	
 	if (this.value.length == 0) {
 		wrongDiv.innerHTML = "";	
+		emailCheck = false;
 	}
 }
 
 function nameFnc() {
 	
-	var wrongDiv = document.getElementsByClassName("email-wrong-message")[1];
+	var wrongDiv = document.getElementById('wrongBox');
 	
-	var re3 = /^[가-힣]{2,6}$/;
+	var re3 = /^[가-힣]{2,4}$/;
 	
 	if (!re3.test(this.value)) {
 		wrongDiv.style.color = "red";
-		wrongDiv.innerHTML = "<img class='wrong-img' src='../img/warning.svg'\">"
-			+ "닉네임은 최소 2자 최대 6자 한글로만 입력가능합니다.";	
+		wrongDiv.innerHTML = "이름은 최소 2자 최대 4자 한글로만 입력가능합니다.";	
+		nickNameCheck = false;
 	} else if (re3.test(this.value)) {
-		wrongDiv.innerHTML = "사용가능한 닉네임입니다.";	
+		wrongDiv.innerHTML = "사용가능한 이름입니다.";	
 		wrongDiv.style.color = "blue";
 		nickNameCheck = true;
 	}
 	
 	if (this.value.length == 0) {
+		
 		wrongDiv.innerHTML = "";	
+		nickNameCheck = false;
 	}
 }
 
 function pwdFnc() {
 	
-	var wrongDiv = document.getElementsByClassName("email-wrong-message")[2];
+	var wrongDiv = document.getElementById('wrongBox');
 	
 	var re = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
 
 	if (!re.test(this.value)) {
 		wrongDiv.style.color = "red";
-		wrongDiv.innerHTML = "<img class='wrong-img' src='../img/warning.svg'\">"
-			+ "패스워드는 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력";
+		wrongDiv.innerHTML = "패스워드는 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력";
+		pwdCheck = false;
+		
 	} else if (re.test(this.value)) {
 		wrongDiv.innerHTML = "사용가능한 비밀번호입니다.";
 		wrongDiv.style.color = "blue";
@@ -89,13 +92,22 @@ function pwdFnc() {
 	
 	if (this.value.length == 0) {
 		wrongDiv.innerHTML = "";	
+		pwdCheck = false;
 	}	
 }
 
 function equalPwd() {
 	var inputObj = document.getElementsByClassName('input-contents');
-	var wrongDiv = document.getElementsByClassName("email-wrong-message")[3];
+	var wrongDiv = document.getElementById('wrongBox');
 
+	if (this.value.length >= inputObj[2].value.length || this.value.length <= inputObj[2].value.length
+			&& this.value != inputObj[2].value ) {
+		wrongDiv.style.color = "red";
+		this.focus();
+		wrongDiv.innerHTML = "입력하신 비밀번호와 일치하지 않습니다.";
+		pwdEqCheck = false;
+	}
+	
 	if (this.value == inputObj[2].value) {
 		wrongDiv.style.color = "blue";
 		wrongDiv.innerHTML = "입력하신 비밀번호와 일치합니다.";
@@ -104,15 +116,10 @@ function equalPwd() {
 	
 	if (this.value.length == 0) {
 		wrongDiv.innerHTML = "";
+		pwdEqCheck = false;
 	}
 
-	if (this.value.length >= inputObj[2].value.length || this.value.length <= inputObj[2].value.length
-			&& this.value != inputObj[2].value ) {
-		wrongDiv.style.color = "red";
-		this.focus();
-		wrongDiv.innerHTML = "<img class='wrong-img' src='../img/warning.svg'\">"
-			+ "입력하신 비밀번호와 일치하지 않습니다.";
-	}
+	
 }
 
 function check(re, what, message) {
@@ -185,9 +192,12 @@ function submitFnc() {
 	}
 }
 
-//email 중복체크
 function inputEmailChk(){
-//새창 만들기
-window.open("emailCheckForm.jsp", "emailwin", "width=400, height=350");
-}//emailCheck() end
+    
+    window.name = "parentForm";
+    window.open("emailCheckForm.jsp",
+            "chkForm", "width=500, height=300, resizable = no, scrollbars = no");    
+}
+
+
 

@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.2" />
-<script type="text/javascript" src="../js/member.js?ver=1.3"></script>
+<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.5" />
+<script type="text/javascript" src="../js/member.js?ver=1.4"></script>
 <title>회원 등록</title>
 
 </head>
@@ -17,13 +17,16 @@
 
 	<div id="root">
 		<div class="member-card-layout">
-
+<div class="email-wrong-message"></div>
 			<div class="member-card-join">
 				<div class="member-card-layout-inner">
 
 					<div class="member-card-layout__logo">
 						<img id="mainImg" class="member-card-layout__logo-image"
 							src="../img/pika0.gif" alt="로고">
+							<div id="wrongBox" >
+							
+							</div>
 					</div>
 					<div class="info-div">
 
@@ -31,19 +34,17 @@
 		method="post"> -->
 						<!--onsubmit="return nextStepFnc();"   -->
 						<form id="formFirst" method="post" onsubmit="return validate();" name="userInfo">
-							<div class="input-box">
+							<div id="main-email" class="input-box">
 								<label class="member-input__label" for="email-input">이메일
 									주소</label> <input class="input-contents" type="text" id="email-input"
 									autocomplete="off" value="" name="email"/>
-								<div class="email-wrong-message"></div>
-								<input id="eqEmail" type="button" value="Email 중복확인" onclick="inputEmailChk()">
 							</div>
+								<input id="eqEmail" type="button" value="중복확인" onclick="inputEmailChk()">
 
-							<div class="input-box" style="margin-top: 40px">
-								<label class="member-input__label" for="name-input">닉네임 </label>
+							<div class="input-box">
+								<label class="member-input__label" for="name-input">이름 </label>
 								<input class="input-contents" type="text" id="name-input"
 									autocomplete="off" value="" name="name" />
-									<div class="email-wrong-message"></div>
 							</div>
 
 
@@ -51,7 +52,6 @@
 								<label class="member-input__label" for="pwd-input">비밀번호</label>
 								<input class="input-contents" type="password" id="pwd-input"
 									autocomplete="off" value="" name="password" />
-								<div class="email-wrong-message"></div>
 							</div>
 							
 							<div class="input-box">
@@ -59,7 +59,6 @@
 									확인</label> <input class="input-contents" type="password"
 									id="pwdChk-input" autocomplete="off" value=""
 									name="passwordChk" />
-								<div class="email-wrong-message"></div>
 							</div>
 							<!--오류메시지  -->
 							<div class="member-input-wrong-message"></div>
@@ -76,6 +75,11 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="member-card-war">
+			
+			</div>
+			
 		</div>
 
 	</div>
