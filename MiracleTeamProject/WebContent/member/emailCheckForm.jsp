@@ -42,7 +42,7 @@
     <br>
     <div id="chk">
         <form id="checkForm" method="post" action="emailCheckProc.jsp">
-            <input type="text" name="email" id="userEmail" class="EmailInput"maxlength="20" autofocus placeholder="이메일을 입력해주세요">
+            <input type="text" name="email" id="userEmail" class="EmailInput" maxlength="20" autofocus placeholder="이메일을 입력해주세요">
             <input class="submitBtn" type="submit" value="중복확인">
         </form>
         <div id="msg"></div>
