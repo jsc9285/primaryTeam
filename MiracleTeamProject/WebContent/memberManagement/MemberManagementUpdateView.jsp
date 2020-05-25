@@ -19,13 +19,16 @@
 		location.href = "../noticeBoard/list";
 	}
 	
-	function pageMoveDeleteFnc(no){
-		var url = "./delete?mmNo=" + no;
-		location.href = url;
+	function pageMoveMemberListFnc() {
+		location.href = "../noticeBoard/list";
 	}
 	
-	function pageMoveAdminDeleteFnc(no){
-		var url = "./delete?adNo=" + no;
+	function pageMoveCheckListFnc() {
+		location.href = "./list"
+	}
+	
+	function pageMoveDeleteFnc(no){
+		var url = "./delete?mmNo=" + no;
 		location.href = url;
 	}
 </script>
@@ -34,29 +37,38 @@
 <body>
 	<jsp:include page="../common/Header.jsp"/>
 	<div>
-	<h1>회원정보</h1>
-	<c:if test="${adminDto != null}">
+		<h1>회원정보</h1>
 		<form action='./update' method='post'>
-			번&emsp;&emsp;호: <input type='text' name='adNo' value='${adminDto.no}' readonly><br>
-			이&emsp;&emsp;름: <input type='text' name='name' value='${adminDto.name}' readonly><br>
-			이&nbsp;메&nbsp;&nbsp;일: <input type='text' name='email' value='${adminDto.email}' readonly><br>
-			비밀번호: <input type='text' name='password' value='${adminDto.password}'><br>
-			<input type='submit' value='저장'>
-			<input type='button' value='삭제' onclick='pageMoveAdminDeleteFnc(${adminDto.no});'>
-			<input type='button' value='취소' onClick='pageMoveListFnc();'>	
+			<c:if test="${adminDto != null}">
+				번&emsp;&emsp;호: <input type='text' name='adNo' value='${adminDto.no}' readonly><br>
+				이&emsp;&emsp;름: <input type='text' name='name' value='${adminDto.name}' readonly><br>
+				이&nbsp;메&nbsp;&nbsp;일: <input type='text' name='email' value='${adminDto.email}' readonly><br>
+				비밀번호: <input type='text' name='password' value='${adminDto.password}'><br>
+				<input type='submit' value='저장'>
+				<input type='button' value='취소' onClick='pageMoveListFnc();'>	
+	<!-- 		</form> -->
+			</c:if>
+			<c:if test="${memberDto != null}">
+	<!-- 		<form action='./update' method='post'> -->
+				번&emsp;&emsp;호: <input type='text' name='mmNo' value='${memberDto.no}' readonly><br>
+				<c:if test="${member.email != 'admin'}">
+					이&emsp;&emsp;름: <input type='text' name='name' value='${memberDto.name}'><br>
+				</c:if>
+				<c:if test="${member.email == 'admin' && memberDto != null}">
+					이&emsp;&emsp;름: <input type='text' name='name' value='${memberDto.name}' readonly><br>
+				</c:if>
+				이&nbsp;메&nbsp;&nbsp;일: <input type='text' name='email' value='${memberDto.email}' readonly><br>
+				비밀번호: <input type='text' name='password' value='${memberDto.password}'><br>
+				<input type='submit' value='저장'>
+				<input type='button' value='삭제' onclick='pageMoveDeleteFnc(${memberDto.no});'>
+			</c:if>
+			<c:if test="${member.email != 'admin'}">
+				<input type='button' value='취소' onClick='pageMoveMemberListFnc();'>	
+			</c:if>
+			<c:if test="${member.email == 'admin' && memberDto != null}">
+				<input type='button' value='취소' onClick='pageMoveCheckListFnc();'>	
+			</c:if>
 		</form>
-	</c:if>
-	<c:if test="${memberDto != null}">
-		<form action='./update' method='post'>
-			번&emsp;&emsp;호: <input type='text' name='mmNo' value='${memberDto.no}' readonly><br>
-			이&emsp;&emsp;름: <input type='text' name='name' value='${memberDto.name}' readonly><br>
-			이&nbsp;메&nbsp;&nbsp;일: <input type='text' name='email' value='${memberDto.email}' readonly><br>
-			비밀번호: <input type='text' name='password' value='${memberDto.password}'><br>
-			<input type='submit' value='저장'>
-			<input type='button' value='삭제' onclick='pageMoveDeleteFnc(${memberDto.no});'>
-			<input type='button' value='취소' onClick='pageMoveListFnc();'>	
-		</form>
-	</c:if>
 	</div>
 	<br>
 	<jsp:include page="../common/Bottom.jsp"/>

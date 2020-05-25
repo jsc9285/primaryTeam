@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import mtp.dao.MemberDao;
 import mtp.dto.MemberDto;
@@ -78,57 +79,89 @@ public class MemberManagementUpdate extends HttpServlet{
 			String pwd = req.getParameter("password");
 			mNo = req.getParameter("mmNo");
 			aNo = req.getParameter("adNo");
-			if (mNo != null) {
-				int no = Integer.parseInt(mNo);
-				memberDto = new MemberDto();
-				memberDto.setEmail(email);
-				memberDto.setName(name);
-				memberDto.setPassword(pwd);
-				memberDto.setNo(no);
-				
-				ServletContext sc = this.getServletContext();
-				
-				conn = (Connection) sc.getAttribute("conn");
-				
-				MemberDao memberDao = new MemberDao();
-				memberDao.setConnection(conn);
-				int result = memberDao.memberManagementUpdate(memberDto);
-				
-				if(result == 0){
-					System.out.println("회원 정보 조회가 실패하였습니다.");
-				}
-				res.sendRedirect("../noticeBoard/list");
-
-			} else if (aNo != null) {
-				int abNo = Integer.parseInt(aNo);	
-				memberDto = new MemberDto();
-				memberDto.setEmail(email);
-				memberDto.setName(name);
-				memberDto.setPassword(pwd);
-				memberDto.setNo(abNo);
-				
-				ServletContext sc = this.getServletContext();
-				
-				conn = (Connection) sc.getAttribute("conn");
-				
-				MemberDao memberDao = new MemberDao();
-				memberDao.setConnection(conn);
-				
-				int admin = memberDao.adminManagementUpdate(memberDto);
-				
-				if(admin == 0) {
-					System.out.println("관리자 정보 조회가 실패하였습니다.");
-				}
 			
-				res.sendRedirect("./list");
+			HttpSession session = req.getSession();
+			mtp.login.dto.MemberDto member = (mtp.login.dto.MemberDto) session.getAttribute("member");
+			
+			//관리자 일때 실행
+			if ("admin".equals(member.getEmail())) {
+				if (mNo != null) {
+					int no = Integer.parseInt(mNo);
+					memberDto = new MemberDto();
+					memberDto.setEmail(email);
+					memberDto.setName(name);
+					memberDto.setPassword(pwd);
+					memberDto.setNo(no);
+					
+					ServletContext sc = this.getServletContext();
+					
+					conn = (Connection) sc.getAttribute("conn");
+					
+					MemberDao memberDao = new MemberDao();
+					memberDao.setConnection(conn);
+					int result = memberDao.memberManagementUpdate(memberDto);
+					
+					if(result == 0){
+						System.out.println("회원 정보 조회가 실패하였습니다.");
+					}
+					res.sendRedirect("./list");
+//					res.sendRedirect("../noticeBoard/list");
+					
+				} else if (aNo != null) {
+					int abNo = Integer.parseInt(aNo);	
+					memberDto = new MemberDto();
+					memberDto.setEmail(email);
+					memberDto.setName(name);
+					memberDto.setPassword(pwd);
+					memberDto.setNo(abNo);
+					
+					ServletContext sc = this.getServletContext();
+					
+					conn = (Connection) sc.getAttribute("conn");
+					
+					MemberDao memberDao = new MemberDao();
+					memberDao.setConnection(conn);
+					
+					int admin = memberDao.adminManagementUpdate(memberDto);
+					
+					if(admin == 0) {
+						System.out.println("관리자 정보 조회가 실패하였습니다.");
+					}
+					res.sendRedirect("../noticeBoard/list");
+//					res.sendRedirect("./list");
+				}
+			//회원일때 실행
+			} else if (!"admin".equals(member.getEmail())) {
+				if (mNo != null) {
+					int no = Integer.parseInt(mNo);
+					memberDto = new MemberDto();
+					memberDto.setEmail(email);
+					memberDto.setName(name);
+					memberDto.setPassword(pwd);
+					memberDto.setNo(no);
+					
+					ServletContext sc = this.getServletContext();
+					
+					conn = (Connection) sc.getAttribute("conn");
+					
+					MemberDao memberDao = new MemberDao();
+					memberDao.setConnection(conn);
+					int result = memberDao.memberManagementUpdate(memberDto);
+					
+					if(result == 0){
+						System.out.println("회원 정보 조회가 실패하였습니다.");
+					}
+					res.sendRedirect("../noticeBoard/list");
+//					res.sendRedirect("./list");
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
-//			req.setAttribute("error", e);
-//			RequestDispatcher rd = req.getRequestDispatcher("/Error.jsp");
-//			rd.forward(req, res);
+			req.setAttribute("error", e);
+			RequestDispatcher rd = req.getRequestDispatcher("/Error.jsp");
+			rd.forward(req, res);
 		} 
 
 	}

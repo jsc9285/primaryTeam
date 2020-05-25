@@ -47,7 +47,10 @@ public class MemberManagement extends HttpServlet {
 			
 			dispatcher.forward(req, res);
 		} catch (Exception e) {
-			e.printStackTrace();
+			req.setAttribute("error", e);
+			RequestDispatcher dispatcher = 
+					req.getRequestDispatcher("/Error.jsp");
+			dispatcher.forward(req, res);
 		}
 	}
 	

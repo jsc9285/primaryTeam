@@ -2,7 +2,9 @@ package mtp.management;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +45,6 @@ public class MemberManagementDelete extends HttpServlet {
 			MemberDto member = (MemberDto) session.getAttribute("member");
 			
 //			 회원일때 실행
-			System.out.println(email);
 			if (!adminTest.equals(member.getEmail())) {
 				if (mNo != null) {
 					int no = Integer.parseInt(mNo);
@@ -63,19 +64,23 @@ public class MemberManagementDelete extends HttpServlet {
 						if (result == 0) {
 							System.out.println("회원 삭제를 실패하였습니다.");
 						}
-					}else if (aNo != null) {
-						int abNo = Integer.parseInt(aNo);
-						int admin = memberDao.adminDataDelete(abNo);
-						if (admin == 0) {
-							System.out.println("관리자 삭제를 실패하였습니다.");
-						}
+					}
+//					else if (aNo != null) {
+//						int abNo = Integer.parseInt(aNo);
+//						int admin = memberDao.adminDataDelete(abNo);
+//						if (admin == 0) {
+//							System.out.println("관리자 삭제를 실패하였습니다.");
+//						}
 
-				} 
+//				} 
 					res.sendRedirect("./list");
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			req.setAttribute("error", e);
+			RequestDispatcher rd = req.getRequestDispatcher("/Error.jsp");
+			rd.forward(req, res);
+			
 		}
 	}
 }
