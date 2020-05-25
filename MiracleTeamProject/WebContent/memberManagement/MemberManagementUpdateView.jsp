@@ -55,12 +55,7 @@
 			<c:if test="${memberDto != null}">
 	<!-- 		<form action='./update' method='post'> -->
 				번&emsp;&emsp;호: <input type='text' name='mmNo' value='${memberDto.no}' readonly><br>
-				<c:if test="${member.email != 'admin'}">
-					이&emsp;&emsp;름: <input type='text' name='name' value='${memberDto.name}'><br>
-				</c:if>
-				<c:if test="${member.email == 'admin' && memberDto != null}">
-					이&emsp;&emsp;름: <input type='text' name='name' value='${memberDto.name}' readonly><br>
-				</c:if>
+				이&emsp;&emsp;름: <input type='text' name='name' value='${memberDto.name}' readonly><br>
 				이&nbsp;메&nbsp;&nbsp;일: <input type='text' name='email' value='${memberDto.email}' readonly><br>
 				비밀번호: <input type='text' name='password' value='${memberDto.password}'><br>
 				<input type='submit' value='저장'>
