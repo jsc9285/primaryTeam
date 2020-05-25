@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 <title>emailCheckProc.jsp</title>
 </head>
 <body>
-<div style="text-align: center"></div>
+<div style="text-align: center">
 <h3>* 아이디 중복 확인 결과 *</h3>
 <%
 //1) 사용가능한 아이디일 경우, 아이디 입력 폼에 넣기 위함
@@ -24,10 +24,10 @@ conn = (Connection) sc.getAttribute("conn");
 
 dao.setConnection(conn);
 int cnt=dao.duplecateEmail(email);
-out.println("입력 ID : <strong>" + email + "</stong>");
+out.println("입력 Email : <strong>" + email + "</stong>");
 if(cnt==0){
 out.println("<p>사용 가능한 이메일입니다.</p>");
-out.println("<a href='javascript:apply(\"" + email + "\")'>[적용]</a>");
+out.println("<a href='javascript:apply(\"" + email + "\")'>[사용하기]</a>");
 %>
 <script>
 function apply(email){
@@ -39,13 +39,14 @@ window.close(); //창닫기
 </script>
 <%
 }else{
-out.println("<p style='color: red'>해당 아이디는 사용하실 수 없습니다.</p>");
+out.println("<p style='color: red'>중복되는 이메일이있습니다.</p>");
 }//if end
 %>
 <hr>
 <a href="javascript:history.back()">[다시시도]</a>
 &nbsp; &nbsp;
 <a href="javascript:window.close()">[창닫기]</a>
+</div>
 </body>
 </html>
 

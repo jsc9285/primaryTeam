@@ -6,7 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.5" />
-<script type="text/javascript" src="../js/member.js?ver=1.4"></script>
+<script type="text/javascript" src="../js/member.js?ver=1.5"></script>
 <title>회원 등록</title>
 
 </head>

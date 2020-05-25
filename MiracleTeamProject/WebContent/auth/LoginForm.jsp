@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/log-in.css?ver=1.2" />
-<script type="text/javascript" src="../js/login.js?ver=1.5"></script>
+<link rel="stylesheet" type="text/css" href="../css/log-in.css?ver=1.3" />
+<script type="text/javascript" src="../js/login.js?ver=1.6"></script>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
 

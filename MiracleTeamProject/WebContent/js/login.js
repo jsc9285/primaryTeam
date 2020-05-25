@@ -50,7 +50,7 @@ function submitFnc() {
 	var sizeUp = document.getElementsByClassName('member-card');
 
 	if (inputObj[0].value.length > 0 && inputObj[1].value.length > 0) {
-		submitBnt.style.backgroundColor = '#1ea1f7';
+		submitBnt.style.backgroundColor = 'skyblue';
 		submitBnt.style.cursor = 'pointer';
 		submitBnt.disabled = false;
 	} else if (inputObj[0].value.length == 0 || inputObj[1].value.length == 0) {
