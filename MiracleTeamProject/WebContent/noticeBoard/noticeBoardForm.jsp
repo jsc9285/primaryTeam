@@ -69,9 +69,7 @@ tr, td {
 		<br>
 			<b><font size="6" color="gray">공지 게시판</font></b>
 		<br>
-		<div id='testDiv' style="background-color: red; width: 200px; height: 200px;">
-		
-		</div>
+
 		<div id="wrap">
 			<c:if test="${member ne null}"> 
 			<br>
