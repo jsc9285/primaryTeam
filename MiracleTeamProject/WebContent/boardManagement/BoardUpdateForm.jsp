@@ -19,13 +19,13 @@
 
 <script type="text/javascript">
 	function pageMoveListFnc(){
-		location.href = "./list";
+		location.href = "./select?no=${boardManagementDto.no}";
 	}
 	
-	function pageMoveDeleteFnc(no){
-		var url = "./delete?no=" + no;
-		location.href = url;
-	}
+// 	function pageMoveDeleteFnc(no){
+// 		var url = "./delete?no=" + no;
+// 		location.href = url;
+// 	}
 </script>
 
 </head>
@@ -42,7 +42,8 @@
 	        <tr>
 	            <td id="title">작성자</td>
 	            <td>
-	            	<input name="writer" type="text" value="${boardManagementDto.writer}">
+	            	<input name="writer" type="text" value="${boardManagementDto.writer}"
+	            		 readonly="readonly">
 	            </td>
 	        </tr>
 	            <tr>
@@ -73,9 +74,9 @@
 	 
 	        <tr align="center" valign="middle">
 	            <td colspan="5">
-	                <input type="submit" value="수정" >
-	                <input type="reset" value="삭제" onclick='pageMoveDeleteFnc(${boardManagementDto.no});'>
-	                <input type="button" value="목록" onclick='pageMoveListFnc();'>           
+	                <input type="submit" value="수정완료" >
+	                <input type="reset" value="복구">
+	                <input type="button" value="수정취소" onclick='pageMoveListFnc();'>           
 	            </td>
 	        </tr>
 	    </table>    
