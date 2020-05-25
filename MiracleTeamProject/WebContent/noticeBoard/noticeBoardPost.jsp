@@ -18,6 +18,8 @@
 
 <body>
 
+	<jsp:include page="/common/Header.jsp" />	
+	<div style="width: 1000px; margin: auto;">
 	<br>
 	<b><font size="6" color="gray">게시글 작성</font></b>
 	<br>
@@ -49,11 +51,14 @@
 				<td colspan="5">
 					<input type="submit" value="작성"> 
 					<input type="reset" value="리셋"> 
-					<input type="button" value="목록">
+					<input type="button" value="목록" onclick="location.href = './list'">
 				</td>
 			</tr>
 		</table>
 	</form>
-
+	</div>
+	<br>
+	<jsp:include page="/common/Bottom.jsp" />
+	
 </body>
 </html>

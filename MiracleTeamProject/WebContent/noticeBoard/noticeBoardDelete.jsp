@@ -9,13 +9,17 @@
 </head>
 
 <body>
-
-
-	<div style="border: 1px solid black; width: 400px; height: 200px; background-color: #f0fff0;">
-		<input type="button" value="확인">
-		<input type="button" value="취소">
+	
+	<jsp:include page="/common/Header.jsp" />	
+	
+	<div style="width: 1000px; margin: auto;">
+		<div style="border: 1px solid #B22222; width: 600px; height: 300px; margin: 100px auto; text-align:center; background-color: #f3f5f7">
+			<h1 style="color: #FAFAD2;">정말로 삭제하시겠습니까?</h1>
+			<input style="width: 150px; height: 75px;" type="button" value="확인">
+			<input style="width: 150px; height: 75px;" type="button" value="취소">
+		</div>
 	</div>
+	<jsp:include page="/common/Bottom.jsp" />	
 	
 </body>
-
 </html>

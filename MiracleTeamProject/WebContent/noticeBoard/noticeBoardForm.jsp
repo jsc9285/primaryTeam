@@ -67,7 +67,7 @@
 				<c:forEach var="notice" items="${noticeList}">
 					<tr>
 						<td>${notice.no}</td>
-						<td><a href='./update?no=${notice.no }'>${notice.title}</a></td>
+						<td><a href='./select?no=${notice.no }'>${notice.title}</a></td>
 						<td>${notice.writer}</td>
 					</tr>
 				</c:forEach>
