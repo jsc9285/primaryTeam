@@ -49,15 +49,17 @@
 <body>
 
 	<jsp:include page="/common/Header.jsp" />
-	<div style="width: 1000px; margin: auto;">
+	<div style="width: 1000px; height: 600px; margin: auto;">
 		<br>
 			<b><font size="6" color="gray">공지 게시판</font></b>
 		<br>
 		<div id="wrap">
-			
+			<c:if test="${member ne null}">
 			<br>
 			<div id="topForm">
-				<input type="button" value="글쓰기" onclick="location.href = './post?no=${member.no}'">
+				<c:if test="${member.email.equals('admin')}">
+					<input type="button" value="글쓰기" onclick="location.href = './post?no=${member.no}'">
+				</c:if>
 			</div>
 			<br>
 			<div id="board">
@@ -110,8 +112,12 @@
 						<input type="submit" value="검색" />
 				</form>
 			</div>
-		</div>
-		<br>
+			</c:if>
+			<c:if test="${member eq null}">
+				<b><font size="4" color="gray" >로그인이 필요한 서비스입니다.</font></b>
+			</c:if>
+		</div>		
+		<br>		
 	</div>
 	<jsp:include page="/common/Bottom.jsp" />
 

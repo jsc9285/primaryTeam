@@ -19,7 +19,7 @@
 <body>
 
 	<jsp:include page="/common/Header.jsp" />	
-	<div style="width: 1000px; margin: auto;">
+	<div style="width: 1000px; height: 600px; margin: auto;">
 	<br>
 	<b><font size="6" color="gray">게시글 작성</font></b>
 	<br>
@@ -28,7 +28,7 @@
 		<table width="700" border="3" bordercolor="lightgray" align="center">
 			<tr>
 				<td class="title1">작성자</td>
-				<td><input type="text" name='writer' value='${member.name}'/></td>
+				<td><input type="text" name='writer' value='${member.name}' readonly="readonly"/></td>
 			</tr>
 			<tr>
 				<td class="title1">제 목</td>
@@ -57,7 +57,6 @@
 		</table>
 	</form>
 	</div>
-	<br>
 	<jsp:include page="/common/Bottom.jsp" />
 	
 </body>

@@ -20,7 +20,7 @@
 <body>
 
 	<jsp:include page="/common/Header.jsp" />		
-	<div style="width: 1000px; margin: auto;">
+	<div style="width: 1000px; height: 600px; margin: auto;">
 		<br>
 		<b><font size="6" color="gray">게시글 수정</font></b>
 		<br>
@@ -55,13 +55,12 @@
 					<td colspan="5">
 						<input type="submit" value="수정완료">
 						<input type="reset" value="복구">
-						<input type="button" value="수정취소" onclick="location.href = './select?no=${noticeDto.no}'">
+						<input type="button" value="수정취소" onclick="location.href = './select?no=${noticeDto.no}&page=${page}'">
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<br>
 	<jsp:include page="/common/Bottom.jsp" />
 
 </body>

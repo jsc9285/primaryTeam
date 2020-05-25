@@ -20,13 +20,14 @@
 <body>
 
 	<jsp:include page="/common/Header.jsp" />		
-	<div style="width: 1000px; margin: auto;">
+	<div style="width: 1000px; height: 600px; margin: auto;">
 		<br>
 		<b><font size="6" color="gray">게시글 조회</font></b>
 		<br>
 	
 		<form action="./update" method="get">
 			<input type="hidden" name="no" value='${noticeDto.no}'/>
+			<input type="hidden" name="page" value='${page}'/>
 			<table width="700" border="3" bordercolor="lightgray" align="center">
 				<tr>
 					<td id="title">작성자</td>
@@ -63,7 +64,6 @@
 			</table>
 		</form>
 	</div>
-	<br>
 	<jsp:include page="/common/Bottom.jsp" />
 
 </body>
