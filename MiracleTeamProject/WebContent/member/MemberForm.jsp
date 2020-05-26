@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.1" />
+<link rel="stylesheet" type="text/css" href="../css/custom.css?ver=1.2" />
 <script type="text/javascript" src="../js/member.js?ver=1.1"></script>
 <title>회원 등록</title>
 
