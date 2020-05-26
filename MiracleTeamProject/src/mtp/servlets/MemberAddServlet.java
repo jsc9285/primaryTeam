@@ -64,7 +64,5 @@ public class MemberAddServlet extends HttpServlet{
 					req.getRequestDispatcher("../common/Error.jsp");
 			dispatcher.forward(req, res);
 		}
-		
 	}
-	
 }

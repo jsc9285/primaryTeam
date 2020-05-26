@@ -57,7 +57,5 @@ public class MemberListServlet extends HttpServlet{
 			dispatcher.forward(request, response);
 			
 		}
-		
 	}
-	
 }

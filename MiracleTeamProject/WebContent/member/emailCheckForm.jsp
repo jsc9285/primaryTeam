@@ -6,25 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>이메일 중복체크</title>
 
-<style type="text/css">
-#wrap {
-	text-align: center;
-	margin-top: 30px;
-}
-
-#chk {
-	text-align: center;
-}
-
-.cancelBtn {
-	visibility: visible;
-}
-
-#useBtn {
-	visibility: hidden;
-}
-</style>
-
 <script type="text/javascript">
 	// 회원가입창의 아이디 입력란의 값을 가져온다.
 	function pValue() {
@@ -41,9 +22,8 @@
 				<input type="text" name="email" id="userEmail" class="EmailInput"
 					maxlength="20" autofocus placeholder="이메일을 입력해주세요">
 				<div class="btnBox">
-					<input class="submitBtn" type="submit" value="중복확인"> <input
-						class="cancelBtn" type="button" value="취소"
-						onclick="window.close()">
+					<input class="submitBtn" type="submit" value="중복확인"> 
+					<input class="cancelBtn" type="button" value="취소" onclick="window.close()">
 				</div>
 		</form>
 		</div>

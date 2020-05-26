@@ -31,7 +31,8 @@
 	<c:if test="${member eq null}">
 		<div style="width: 1000px; margin: auto; background-color: #f3f5f7; text-align: center;">
 			<p onclick="PageMoveFnc('/auth/login');" style="margin: 0px;">
-				<img id='mainImg' style="display: block; width: 1000px; height: 600px;" onmouseenter="changeImgFnc();" onmouseleave="reChangeImgFnc();" src="./img/poke1.gif" alt="MainImg">
+				<img id='mainImg' style="display: block; width: 1000px; height: 600px;" 
+				onmouseenter="changeImgFnc();" onmouseleave="reChangeImgFnc();" src="./img/poke1.gif" alt="MainImg">
 			</p>		
 		</div>
 	</c:if>
@@ -39,7 +40,8 @@
 	<c:if test="${member ne null}">
 		<div style="width: 1000px; margin: auto; background-color: #f3f5f7; text-align: center;">
 			<p onclick="PageMoveFnc('/noticeBoard/list');" style="margin: 0px;">
-				<img id='mainImg' style="display: block; width: 1000px; height: 600px;" onmouseenter="changeImgFnc();" onmouseleave="reChangeImgFnc();" src="./img/poke1.gif" alt="MainImg">
+				<img id='mainImg' style="display: block; width: 1000px; height: 600px;" 
+				onmouseenter="changeImgFnc();" onmouseleave="reChangeImgFnc();" src="./img/poke1.gif" alt="MainImg">
 			</p>		
 		</div>
 	</c:if>

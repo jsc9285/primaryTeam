@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher rd = 
 				req.getRequestDispatcher("./LoginForm.jsp");
 		rd.forward(req, res);
-
 	}
 
 	@Override

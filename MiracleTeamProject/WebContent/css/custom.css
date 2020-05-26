@@ -13,6 +13,19 @@ button {
 	cursor: pointer;
 }
 
+#wrap {
+	text-align: center;
+	margin-top: 30px;
+}
+
+#chk {
+	text-align: center;
+}
+
+#useBtn {
+	visibility: hidden;
+}
+
 #root {
 	background-color: #f3f5f7;
 	width: 1000px;
@@ -301,6 +314,7 @@ button {
 	border: 1px solid skyblue;
 	cursor: pointer;
 	margin-left: 45px;
+	visibility: visible;
 }
 
 .btn_group {

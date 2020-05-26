@@ -62,11 +62,9 @@ function submitFnc() {
 	}
 }
 
-function findPwd(){
-    
-    window.name = "parentForm";
-    window.open("FindPwdForm.jsp",
-            "chkForm", "width=500, height=320, resizable = no, scrollbars = no");    
+function findPwd() {
+
+	window.name = "parentForm";
+	window.open("FindPwdForm.jsp", "chkForm",
+			"width=500, height=320, resizable = no, scrollbars = no");
 }
-
-

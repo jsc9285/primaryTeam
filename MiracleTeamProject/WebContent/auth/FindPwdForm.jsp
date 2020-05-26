@@ -6,25 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>비밀번호 찾기</title>
 
-<style type="text/css">
-#wrap {
-	text-align: center;
-	margin-top: 30px;
-}
-
-#chk {
-	text-align: center;
-}
-
-#cancelBtn {
-	visibility: visible;
-}
-
-#useBtn {
-	visibility: hidden;
-}
-</style>
-
 </head>
 <body>
 	<div id="wrap">
@@ -34,13 +15,12 @@
 				<input type="text" name="email" id="userEmail" class="EmailInput"
 					maxlength="20" autofocus placeholder="이메일을 입력해주세요">
 				<div class="btnBox">
-					<input class="submitBtn" type="submit" value="비번찾기"> <input
-						class="cancelBtn" type="button" value="취소"
-						onclick="window.close()"><br>
+					<input class="submitBtn" type="submit" value="비번찾기"> 
+					<input class="cancelBtn" type="button" value="취소"
+						onclick="window.close()">
 				</div>
-		</form>
+			</form>
 		</div>
-
 	</div>
 </body>
 </html>

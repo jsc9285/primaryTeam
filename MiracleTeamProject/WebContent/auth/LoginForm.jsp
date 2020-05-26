@@ -21,42 +21,39 @@
 						<img id="mainImg" class="member-card-layout__logo-image"
 							src="../img/pika4.gif" alt="로고">
 					</div>
-				
 
+					<form id="formFirst" action="./login" method="post" name="userInfo"
+						onsubmit="return nextStepFnc();">
 
-						<!--onsubmit="return nextStepFnc();"   -->
-						<form id="formFirst" action="./login" method="post" name="userInfo"
-							onsubmit="return nextStepFnc();">
+						<div class="input-box">
+							<label class="member-input__label" for="email-input">이메일 주소
+							</label> 
+							<input class="input-contents" type="text" id="email-input"
+								autocomplete="off" value="" name="email" />
+						</div>
 
-							<div class="input-box">
-								<label class="member-input__label" for="email-input">이메일
-									주소</label> <input class="input-contents" type="text" id="email-input"
-									autocomplete="off" value="" name="email" />
-							</div>
+						<div class="input-box">
+							<label class="member-input__label" for="pwd-input">비밀번호
+							</label> 
+							<input class="input-contents" type="password" id="pwd-input"
+								autocomplete="off" value="" name="password" />
+						</div>
 
-							<div class="input-box">
-								<label class="member-input__label" for="pwd-input">비밀번호</label>
-								<input class="input-contents" type="password" id="pwd-input"
-									autocomplete="off" value="" name="password" />
-							</div>
+						<input id="target" type="submit" class="login-button" value="로그인"
+							disabled>
 
-							<input id="target" type="submit" class="login-button" value="로그인"
-								disabled>
-
-							<div class="btn_group">	
-							<input class="find-password" type="button" onclick="findPwd()" value="비밀번호 찾기">	
-							<input class="signUp" type="button" value="회원가입하기" onclick="location.href='../member/add';">
-							</div>
-							
-																	
-							
-						</form>
-					</div>
+						<div class="btn_group">
+							<input class="find-password" type="button" onclick="findPwd()"
+								value="비밀번호 찾기"> 
+							<input class="signUp" type="button"	value="회원가입하기" 
+								onclick="location.href='../member/add';">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-
 	</div>
+
 	<jsp:include page="../common/Bottom.jsp" />
 </body>
 </html>

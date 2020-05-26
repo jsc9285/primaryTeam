@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 var emailCheck = false;
 var nickNameCheck = false;
 var pwdCheck = false;
