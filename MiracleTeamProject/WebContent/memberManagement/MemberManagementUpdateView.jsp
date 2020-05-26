@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>회원정보수정</title>
 <style type="text/css">
+	#mainWrap {
+		width: 1000px;
+		height: 600px;
+		margin: auto;
+	}
 	div {
 		width: 1000px;
 		margin: auto;
@@ -40,9 +45,11 @@
 
 <body>
 	<jsp:include page="../common/Header.jsp"/>
-	<div>
-		<h1>회원정보</h1>
-		<form action='./update' method='post'>
+	<div id="mainWrap">
+		<br>
+			<h1 style="margin: 0px 25px;">회원정보</h1>
+		<br>
+		<form style="margin-left: 25px;" action='./update' method='post'>
 			<c:if test="${adminDto != null}">
 				번&emsp;&emsp;호: <input type='text' name='adNo' value='${adminDto.no}' readonly><br>
 				이&emsp;&emsp;름: <input type='text' name='name' value='${adminDto.name}' readonly><br>
@@ -69,7 +76,6 @@
 			</c:if>
 		</form>
 	</div>
-	<br>
 	<jsp:include page="../common/Bottom.jsp"/>
 
 </body>

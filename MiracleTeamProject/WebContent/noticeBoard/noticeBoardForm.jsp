@@ -43,7 +43,25 @@
 	background-color: #CD5C5C; 	
 }
 
+.pageBtnTwo{
+	display:inline-block;
+	border: 1px solid #CD5C5C;	
+	width: 50px;
+	height: 20px;
+	border-radius: 50%;	
+	color: #fff;
+	font-size: 13px;
+	text-decoration: none; 
+	background-color: #CD5C5C; 	
+}
+
 .pageBtn:hover{
+	background-color: #fff;
+	border: 1px solid #CD5C5C;
+	color: #CD5C5C;
+}
+
+.pageBtnTwo:hover{
 	background-color: #fff;
 	border: 1px solid #CD5C5C;
 	color: #CD5C5C;
@@ -122,7 +140,7 @@ tr, td {
 			
 			<div id="pageForm">
 				<c:if test="${startPage != 1}">
-					<a href='.list?page=${startPage-1}'>[ 이전 ]</a>			
+					<a class='pageBtnTwo' href='./list?page=${startPage-1}'>이전</a>			
 				</c:if>
 			
 				<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
@@ -135,7 +153,7 @@ tr, td {
 				</c:forEach>
 				
 				<c:if test="${endPage != maxPage}">
-					<a href='.list?page=${endPage+1}'>[ 다음 ]</a>			
+					<a class='pageBtnTwo' href='./list?page=${endPage+1}'>다음</a>			
 				</c:if>
 			</div>
 			
