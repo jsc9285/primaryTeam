@@ -45,8 +45,8 @@
 						class="cancelBtn" type="button" value="Ãë¼Ò"
 						onclick="window.close()">
 				</div>
-		</div>
 		</form>
+		</div>
 	</div>
 </body>
 </html>

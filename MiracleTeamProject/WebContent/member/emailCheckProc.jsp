@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>emailCheckProc.jsp</title>
+<title>아이디 중복 확인 결과</title>
 </head>
 <body>
 <div style="text-align: center">

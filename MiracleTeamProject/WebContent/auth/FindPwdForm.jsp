@@ -38,8 +38,8 @@
 						class="cancelBtn" type="button" value="Ãë¼Ò"
 						onclick="window.close()"><br>
 				</div>
-		</div>
 		</form>
+		</div>
 
 	</div>
 </body>
