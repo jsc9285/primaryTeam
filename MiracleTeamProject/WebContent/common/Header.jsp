@@ -21,6 +21,11 @@
 	cursor: pointer;
  	font-family: Comic Sans MS, Comic Sans, cursive;
 }
+#headerH1:hover{
+	background: linear-gradient( to top, red, white );
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+}
 </style>
 <script type="text/javascript">
 	function PageMoveFnc(address) {
@@ -50,10 +55,10 @@
 	<c:if test="${sessionScope.member.email ne null}">
 		<a class='titleMenu' style="float: right;" onclick="PageMoveFnc('/auth/logout');">로그아웃</a>		
 		<c:if test="${sessionScope.member.email eq 'admin'}">
-			<a class='titleMenu' style="float: right; margin-right: 10px;"onclick="location.href='../memberManagement/update?adNo=${sessionScope.member.no}'" >${sessionScope.member.name}</a>
+			<a class='titleMenu' style="float: right; margin-right: 10px;"onclick="location.href='<%=request.getContextPath()%>/memberManagement/update?adNo=${sessionScope.member.no}'" >${sessionScope.member.name}</a>
 		</c:if>
 		<c:if test="${sessionScope.member.email ne 'admin'}">
-			<a class='titleMenu' style="float: right; margin-right: 10px;"onclick="location.href='../memberManagement/update?mmNo=${sessionScope.member.no}'" >${sessionScope.member.name}</a>
+			<a class='titleMenu' style="float: right; margin-right: 10px;"onclick="location.href='<%=request.getContextPath()%>/memberManagement/update?mmNo=${sessionScope.member.no}'" >${sessionScope.member.name}</a>
 		</c:if>
 	</c:if>
 

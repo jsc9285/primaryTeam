@@ -69,6 +69,10 @@
 		text-decoration: underline;
 	}
 	
+	#pageBtnA{
+	color: #000;
+	}
+	
 	table {
 		border: 3px solid lightgray;
 		margin: auto;
@@ -130,7 +134,7 @@
 		
 			<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
 				<c:if test="${pageNum == spage}">
-					<a class='pageBtn'>${pageNum}&nbsp;</a>
+					<a id='pageBtnA' class='pageBtn'>${pageNum}&nbsp;</a>
 				</c:if>
 				<c:if test="${pageNum != spage}">
 					<a class='pageBtn' href="./list?page=${pageNum}">${pageNum}&nbsp;</a>
