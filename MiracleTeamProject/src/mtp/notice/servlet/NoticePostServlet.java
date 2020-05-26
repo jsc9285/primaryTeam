@@ -25,34 +25,7 @@ public class NoticePostServlet extends HttpServlet{
 			HttpServletResponse res) 
 					throws ServletException, IOException {
 		
-		Connection conn = null;
-		
-		try {
-			// 연결 
-			ServletContext sc = this.getServletContext();
-			conn = (Connection) sc.getAttribute("conn");
-			
-			int no = Integer.parseInt(req.getParameter("no")); // 접속자의 회원번호(no)를 받아옴
-			
-			// DB 연결( 회원정보(MemberDto), 게시물정보(NoticeDto) )
-			MemberDao memberDao = new MemberDao();
-			memberDao.setConnection(conn);
-			// 접속된 MemberDto의 정보를 조회하는 Dao 함수 
-			MemberDto memberDto = new MemberDto();
-			
-			memberDto = memberDao.memberSelectOne(no);
-			req.setAttribute("memberDto", memberDto);
-			
-			// 공지사항게시판폼으로 이동
-			RequestDispatcher rd = 
-					req.getRequestDispatcher("./noticeBoardPost.jsp");
-			rd.forward(req, res);
-		} catch (Exception e) {
-			req.setAttribute("error", e);
-			RequestDispatcher rd = 
-					req.getRequestDispatcher("/Error.jsp");
-			rd.forward(req, res);
-		} // catch End
+		res.sendRedirect("../noticeBoard/noticeBoardPost.jsp");
 	}
 	
 	@Override
