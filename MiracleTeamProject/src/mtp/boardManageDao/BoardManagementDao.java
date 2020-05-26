@@ -34,7 +34,7 @@ public class BoardManagementDao {
 				sql = "SELECT *";
 				sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM BOARD_POST)";
 				sql += " WHERE rnum>=? and rnum<=?";			
-				sql += " ORDER BY NO DESC";
+				sql += " ORDER BY NO ASC";
 				
 				pstmt = conn.prepareStatement(sql);
 				
@@ -45,7 +45,7 @@ public class BoardManagementDao {
 				sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM BOARD_POST)";
 				sql += " WHERE TITLE LIKE ?";
 				sql += " AND rnum>=? and rnum<=?";			
-				sql += " ORDER BY NO DESC";
+				sql += " ORDER BY NO ASC";
 				
 				pstmt = conn.prepareStatement(sql);
 
@@ -57,7 +57,7 @@ public class BoardManagementDao {
 				sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM BOARD_POST)";
 				sql += " WHERE CONTEXT LIKE ?";
 				sql += " AND rnum>=? and rnum<=?";			
-				sql += " ORDER BY NO DESC";
+				sql += " ORDER BY NO ASC";
 				
 				pstmt = conn.prepareStatement(sql);
 
@@ -70,7 +70,7 @@ public class BoardManagementDao {
 				sql += " WHERE (TITLE LIKE ?";
 				sql += " OR CONTEXT LIKE ?)";
 				sql += " AND rnum>=? and rnum<=?";			
-				sql += " ORDER BY NO DESC";
+				sql += " ORDER BY NO ASC";
 				
 				pstmt = conn.prepareStatement(sql);
 
@@ -83,7 +83,7 @@ public class BoardManagementDao {
 				sql += " FROM (SELECT rownum rnum, NO, TITLE, WRITER, CONTEXT FROM BOARD_POST)";
 				sql += " WHERE WRITER LIKE ?";
 				sql += " AND rnum>=? and rnum<=?";			
-				sql += " ORDER BY NO DESC";
+				sql += " ORDER BY NO ASC";
 				
 				pstmt = conn.prepareStatement(sql);
 

@@ -61,7 +61,7 @@
 	                             제 목
 	            </td>
 	            <td>
-	                <input name="title" type="text" maxlength="50">
+	                <input name="title" type="text" maxlength="15">
 	            </td>        
 	        </tr>
 	        <tr>
